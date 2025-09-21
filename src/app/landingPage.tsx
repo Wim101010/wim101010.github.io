@@ -223,7 +223,7 @@ export default function HomePage() {
             {/* Updates */}
             <section id="events" className="bg-beige border-t border-gray-200">
                 <div className="mx-auto max-w-7xl px-4 py-16 justify-center">
-                    <h2 className="text-center text-bordeaux text-3xl font-bold">NGO's you can help.</h2>
+                    <h2 className="text-center text-bordeaux text-3xl font-bold">NGO&apos;s you can help.</h2>
                     <div className="mt-10 grid grid-cols-3 grid-rows-2 gap-4">
                         {updateItems.map((item, i) => (
                             <a

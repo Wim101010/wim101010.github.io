@@ -65,7 +65,7 @@ export default function HomePage() {
                 <title>Impact Makers Utrecht — Doing Good Better</title>
                 <meta
                     name="description"
-                    content="Impact Makers Utrecht is a community for people who want to do the most good they can, using evidence and careful reasoning."
+                    content="Impact Makers Utrecht is a community for student who want to do good for the world, using evidence and careful reasoning."
                 />
             </Head>
 
@@ -158,7 +158,7 @@ export default function HomePage() {
                 <div className="relative" style={{ zIndex: 1, padding: '0 1rem' }}>
                     <h1 style={{ fontSize: 'clamp(2rem, 6vw, 4rem)', fontWeight: 800 }}>Doing Good Better</h1>
                     <p className="mx-auto" style={{ marginTop: 16, maxWidth: 720, fontSize: 18 }}>
-                        Impact Makers Utrecht is a community for people who want to do the most good they can, using evidence and careful reasoning.
+                        Impact Makers Utrecht is a community for student who want to do the most good they can, using evidence and careful reasoning.
                     </p>
                 </div>
             </section>
@@ -170,8 +170,8 @@ export default function HomePage() {
                         <iframe
                             width="100%"
                             height="100%"
-                            src="https://www.youtube.com/embed/diDvxeia2cY"
-                            title="Effective Altruism Talk"
+                            src="https://www.youtube.com/watch?v=LtWINl3C_7s"
+                            title="What do we do?"
                             frameBorder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowFullScreen
@@ -179,10 +179,10 @@ export default function HomePage() {
                     </div>
                     <div>
                         <h2 className="text-bordeaux" style={{ fontSize: 'clamp(1.5rem, 4vw, 2.25rem)', fontWeight: 700 }}>
-                            Effective altruism is about using evidence and reason.
+                            Impact Makers Utrecht is helping you to do good better.
                         </h2>
                         <p className="mt-4" style={{ color: THEME.gray, marginTop: 16 }}>
-                            Effective altruism takes the well-being of others as a guiding principle, using the best available evidence to guide our actions. These principles are applied by a global network of over 200 student organisations.
+                            We will help you to find a problem that is important to you, and work with you to develop a plan to address it. This
                         </p>
                     </div>
                 </div>

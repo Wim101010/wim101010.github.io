@@ -33,14 +33,14 @@ const NAV: Array<{ label: string; href: string }> = [
     { label: "Events", href: "#events" },
 ];
 
-// Placeholder updates (replace with actual image paths or remote loader config)
-const UPDATES: string[] = [
-    "/Leuk Kaartje 3 gebroeders.png",
-    "/Leuk Kaartje 3 gebroeders.png",
-    "/Leuk Kaartje 3 gebroeders.png",
-    "/Leuk Kaartje 3 gebroeders.png",
-    "/Leuk Kaartje 3 gebroeders.png",
-    "/Leuk Kaartje 3 gebroeders.png",
+// Update UPDATES to include src and href for each image
+const UPDATES: Array<{ src: string; href: string }> = [
+    { src: "/AIM Charity Entrepreneurship.jpg", href: "https://www.charityentrepreneurship.com/" },
+    { src: "/Endiomitrose Stichting.jpg", href: "https://www.endometriose.nl/" },
+    { src: "/Lafiya Nigeria.jpg", href: "https://lafiyanigeria.org/" },
+    { src: "/Wakker Dier.jpg", href: "https://www.wakkerdier.nl/" },
+    { src: "/Unicef.jpg", href: "https://www.unicef.nl/wie-we-zijn/over-ons/werken-bij-unicef" },
+    { src: "/Milieudefensie.png", href: "https://milieudefensie.nl/klimaatzaak-ing" },
 ];
 
 // ---- Dev-time sanity tests (won't break production) ------------------------
@@ -63,10 +63,8 @@ export default function HomePage() {
         <>
             <Head>
                 <title>Impact Makers Utrecht — Doing Good Better</title>
-                <meta
-                    name="description"
-                    content="Impact Makers Utrecht is a community for student who want to do good for the world, using evidence and careful reasoning."
-                />
+                <meta name="description" content="Impact Makers Utrecht is a community for student who want to do good for the world, using evidence and careful reasoning." />
+                <link rel="icon" href="public/favicon.png" />
             </Head>
 
             {/* Global theme styles (scoped) */}
@@ -170,7 +168,7 @@ export default function HomePage() {
                         <iframe
                             width="100%"
                             height="100%"
-                            src="https://www.youtube.com/watch?v=LtWINl3C_7s"
+                            src="https://www.youtube.com/embed/yKcU7GTqxps"
                             title="What do we do?"
                             frameBorder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -182,7 +180,17 @@ export default function HomePage() {
                             Impact Makers Utrecht is helping you to do good better.
                         </h2>
                         <p className="mt-4" style={{ color: THEME.gray, marginTop: 16 }}>
-                            We will help you to find a problem that is important to you, and work with you to develop a plan to address it. This
+                            We will help you to find a problem that is important to you, and work with you to develop a plan to address it. Join us to follow 4 discussion evenings in which we find what is important to YOU and HOW we can do something about this. Applications are now open:&nbsp;
+                            <span
+                                onClick={() => window.open("https://docs.google.com/forms/d/e/1FAIpQLScAZikPeHx56oQ9IZWc5xcXdspFKxVxAkOONE--9mLGHnDZMg/viewform?usp=sharing&ouid=115559765482762218918", "_blank", "noopener,noreferrer")}
+                                style={{ color: THEME.bordeaux, textDecoration: "underline", cursor: "pointer" }}
+                                tabIndex={0}
+                                role="link"
+                                aria-label="enroll for the intro discussions"
+                                onKeyPress={e => { if (e.key === "Enter" || e.key === " ") window.open("https://docs.google.com/forms/d/e/1FAIpQLScAZikPeHx56oQ9IZWc5xcXdspFKxVxAkOONE--9mLGHnDZMg/viewform?usp=sharing&ouid=115559765482762218918", "_blank", "noopener,noreferrer"); }}
+                            >
+                                enroll for the intro discussions!
+                            </span>
                         </p>
                     </div>
                 </div>
@@ -201,7 +209,7 @@ export default function HomePage() {
                         {[
                             { title: 'Investigate ideas', body: 'Learn about global challenges and explore which causes matter most.' },
                             { title: 'Community', body: 'Join a group of like-minded people and collaborate to create change.' },
-                            { title: 'Taking action', body: 'Apply EA principles in your career, research, or projects for impact.' },
+                            { title: 'Taking action', body: 'Start immediatly with making impact.' },
                         ].map((item) => (
                             <div key={item.title}>
                                 <h3 style={{ fontWeight: 700, color: '#111827' }}>{item.title}</h3>
@@ -215,18 +223,18 @@ export default function HomePage() {
             {/* Updates */}
             <section id="events" className="bg-beige border-t border-gray-200">
                 <div className="mx-auto max-w-7xl px-4 py-16 justify-center">
-                    <h2 className="text-center text-bordeaux text-3xl font-bold">Our latest updates</h2>
+                    <h2 className="text-center text-bordeaux text-3xl font-bold">NGO's you can help.</h2>
                     <div className="mt-10 grid grid-cols-3 grid-rows-2 gap-4">
-                        {updateItems.map((src, i) => (
+                        {updateItems.map((item, i) => (
                             <a
                                 key={i}
-                                href="https://www.instagram.com/mimi_moto_ccfa/"
+                                href={item.href}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="relative overflow-hidden rounded-lg aspect-square block"
                             >
                                 <Image
-                                    src={src}
+                                    src={item.src}
                                     alt={`Update ${i + 1}`}
                                     fill
                                     sizes="(max-width: 768px) 50vw, 16vw"

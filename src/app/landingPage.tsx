@@ -63,7 +63,7 @@ export default function HomePage() {
         <>
             <Head>
                 <title>Impact Makers Utrecht — Doing Good Better</title>
-                <meta name="description" content="Impact Makers Utrecht is a community for student who want to do good for the world, using evidence and careful reasoning." />
+                <meta name="description" content="Impact Makers Utrecht is a community for students who want to do good for the world, using evidence and careful reasoning." />
                 <link rel="icon" href="public/favicon.png" />
             </Head>
 

@@ -156,7 +156,7 @@ export default function HomePage() {
                 <div className="relative" style={{ zIndex: 1, padding: '0 1rem' }}>
                     <h1 style={{ fontSize: 'clamp(2rem, 6vw, 4rem)', fontWeight: 800 }}>Doing Good Better</h1>
                     <p className="mx-auto" style={{ marginTop: 16, maxWidth: 720, fontSize: 18 }}>
-                        Impact Makers Utrecht is a community for student who want to do the most good they can, using evidence and careful reasoning.
+                        Impact Makers Utrecht is a community for students who want to do the most good possible, using evidence and careful reasoning.
                     </p>
                 </div>
             </section>

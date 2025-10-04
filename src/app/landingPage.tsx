@@ -101,7 +101,7 @@ export default function HomePage() {
             <header className="sticky top-0 z-50 w-full border-b border-gray-200" style={{ background: "rgba(255,255,255,.9)", backdropFilter: "blur(8px)" }}>
                 <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4" style={{ display: 'flex' }}>
                     <Link href="#home" className="flex items-center gap-3" style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                        <Image src="/droneshot.jpg" alt="Impact Makers Utrecht Logo" width={30} height={30} />
+                        <Image src="/favicon.png" alt="Impact Makers Utrecht Logo" width={30} height={30} />
                         <span className="font-semibold text-bordeaux">Impact Makers Utrecht</span>
                     </Link>
 
@@ -286,9 +286,9 @@ export default function HomePage() {
                 <div className="mx-auto max-w-7xl px-4 py-10" style={{ display: 'flex', flexDirection: 'column', gap: 16, alignItems: 'center', justifyContent: 'space-between' }}>
                     <span style={{ color: THEME.gray, fontSize: 14 }}>© {new Date().getFullYear()} Impact Makers Utrecht — Doing Good Better</span>
                     <div style={{ display: 'flex', gap: 16 }}>
-                        <Link href="#" aria-label="Instagram" className="btn btn-outline">Instagram</Link>
-                        <Link href="#" aria-label="LinkedIn" className="btn btn-outline">LinkedIn</Link>
-                        <Link href="#" aria-label="Email" className="btn btn-outline">Email</Link>
+                        <Link href="https://www.instagram.com/impactmakersutrecht/" aria-label="Instagram" className="btn btn-outline">Instagram</Link>
+                        <Link href="https://www.linkedin.com/company/impact-makers-utrecht" aria-label="LinkedIn" className="btn btn-outline">LinkedIn</Link>
+                        <Link href="mailto:wimtenberge1@gmail.com" aria-label="Email" className="btn btn-outline">Email</Link>
                     </div>
                 </div>
             </footer>

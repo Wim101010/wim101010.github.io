@@ -10,12 +10,13 @@ const WHATSAPP_URL = "https://chat.whatsapp.com/HtnrgFwcNvxEBk4bbJy4vq";
 
 const THEME = {
   white: "#ffffff",
-  bordeaux: "#800020",
-  bordeauxLight: "#a00028",
-  gray: "#4b4b4b",
-  beige: "#f5f4ef",
-  beigeDeep: "#ede9e0",
-  dark: "#1a1a1a",
+  navy: "#143C5A",
+  navyLight: "#1E4E72",
+  accent: "#328CBE",
+  gray: "#4b5563",
+  beige: "#EEF6FA",
+  beigeDeep: "#D4EAF5",
+  dark: "#0D2030",
 };
 
 const NAV = [
@@ -64,19 +65,23 @@ const STEPS = [
 const STORIES = [
   {
     quote: "I launched an endometriosis awareness campaign that reached thousands of people.",
-    name: "Former participant",
     tag: "Round 1",
   },
   {
     quote: "I found my place at Buddy-to-Buddy and now volunteer every week. Impact Makers gave me the push I needed.",
-    name: "Former participant",
     tag: "Round 2",
   },
   {
     quote: "Through the fellowship I figured out exactly where I wanted to go — I ended up doing international volunteer work.",
-    name: "Former participant",
     tag: "Round 3",
   },
+];
+
+const TEAM = [
+  { name: "Wim",   initials: "W" },
+  { name: "Jeroen", initials: "J" },
+  { name: "Tuana",  initials: "T" },
+  { name: "Hugo",   initials: "H" },
 ];
 
 export default function HomePage() {
@@ -84,59 +89,23 @@ export default function HomePage() {
 
   return (
     <>
-      <style jsx global>{`
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        :root {
-          --bordeaux: ${THEME.bordeaux};
-          --bordeaux-light: ${THEME.bordeauxLight};
-          --gray: ${THEME.gray};
-          --beige: ${THEME.beige};
-          --beige-deep: ${THEME.beigeDeep};
-          --white: ${THEME.white};
-          --dark: ${THEME.dark};
-        }
-        html { scroll-behavior: smooth; }
-        body { font-family: var(--font-geist-sans, 'Inter', Arial, sans-serif); color: var(--dark); background: var(--white); }
-        .btn {
-          display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-          padding: 0.75rem 1.5rem; border-radius: 2rem; font-weight: 700; font-size: 0.95rem;
-          border: 2px solid transparent; transition: all .2s ease; cursor: pointer; text-decoration: none;
-          white-space: nowrap;
-        }
-        .btn-primary { background: var(--bordeaux); color: #fff; border-color: var(--bordeaux); }
-        .btn-primary:hover { background: var(--bordeaux-light); border-color: var(--bordeaux-light); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(128,0,32,.35); }
-        .btn-outline { background: transparent; color: var(--bordeaux); border-color: var(--bordeaux); }
-        .btn-outline:hover { background: var(--bordeaux); color: #fff; transform: translateY(-1px); }
-        .btn-white { background: #fff; color: var(--bordeaux); border-color: #fff; }
-        .btn-white:hover { background: var(--beige); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,0,0,.15); }
-        .btn-lg { padding: 1rem 2rem; font-size: 1.05rem; border-radius: 2.5rem; }
-        .section-inner { max-width: 1120px; margin: 0 auto; padding: 0 1.5rem; }
-        .section-title { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; line-height: 1.15; }
-        .tag { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 2rem; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
-        .divider { height: 1px; background: #e5e7eb; }
-        @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-        .fade-up { animation: fadeUp .7s ease both; }
-        .fade-up-1 { animation-delay: .1s; }
-        .fade-up-2 { animation-delay: .25s; }
-        .fade-up-3 { animation-delay: .4s; }
-      `}</style>
-
       {/* ── NAVBAR ── */}
       <header style={{
         position: 'sticky', top: 0, zIndex: 50, width: '100%',
-        borderBottom: '1px solid #e5e7eb',
-        background: 'rgba(255,255,255,.92)', backdropFilter: 'blur(10px)'
+        borderBottom: `1px solid ${THEME.beigeDeep}`,
+        background: 'rgba(255,255,255,.95)', backdropFilter: 'blur(10px)'
       }}>
-        <div className="section-inner" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '1rem 1.5rem' }}>
+        <div className="section-inner" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0.7rem 1.5rem' }}>
           <Link href="#" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none' }}>
-            <Image src="/favicon.png" alt="Impact Makers Utrecht" width={32} height={32} style={{ borderRadius: 6 }} />
-            <span style={{ fontWeight: 800, color: THEME.bordeaux, fontSize: '0.95rem' }}>Impact Makers Utrecht</span>
+            <Image src="/logo.png" alt="Impact Makers Utrecht" width={44} height={44} style={{ objectFit: 'contain' }} />
+            <span style={{ fontWeight: 800, color: THEME.navy, fontSize: '0.95rem', lineHeight: 1.2 }}>Impact Makers<br />Utrecht</span>
           </Link>
 
           <nav style={{ display: 'flex', gap: 28, alignItems: 'center' }} className="desktop-nav">
             {NAV.map(n => (
-              <Link key={n.label} href={n.href} style={{ color: THEME.gray, fontWeight: 500, fontSize: '0.9rem', textDecoration: 'none' }}
-                onMouseEnter={e => (e.currentTarget.style.color = THEME.bordeaux)}
+              <Link key={n.label} href={n.href}
+                style={{ color: THEME.gray, fontWeight: 500, fontSize: '0.9rem', textDecoration: 'none' }}
+                onMouseEnter={e => (e.currentTarget.style.color = THEME.navy)}
                 onMouseLeave={e => (e.currentTarget.style.color = THEME.gray)}>
                 {n.label}
               </Link>
@@ -148,14 +117,14 @@ export default function HomePage() {
           </a>
 
           <button aria-label="Toggle menu" onClick={() => setOpen(v => !v)}
-            style={{ display: 'none', background: 'none', border: 'none', cursor: 'pointer', padding: 6 }}
+            style={{ display: 'none', background: 'none', border: 'none', cursor: 'pointer', padding: 6, color: THEME.navy }}
             className="mobile-menu-btn">
             {open ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
         {open && (
-          <div style={{ background: '#fff', borderTop: '1px solid #e5e7eb', padding: '1rem 1.5rem', display: 'flex', flexDirection: 'column', gap: 12 }}>
+          <div style={{ background: '#fff', borderTop: `1px solid ${THEME.beigeDeep}`, padding: '1rem 1.5rem', display: 'flex', flexDirection: 'column', gap: 12 }}>
             {NAV.map(n => (
               <Link key={n.label} href={n.href} onClick={() => setOpen(false)}
                 style={{ color: THEME.dark, fontWeight: 600, textDecoration: 'none', fontSize: '1rem', padding: '0.4rem 0' }}>
@@ -167,27 +136,24 @@ export default function HomePage() {
             </a>
           </div>
         )}
-
-        <style jsx>{`
-          @media (max-width: 768px) {
-            .desktop-nav { display: none !important; }
-            .mobile-menu-btn { display: block !important; }
-          }
-        `}</style>
       </header>
 
       {/* ── HERO ── */}
       <section id="home" style={{ position: 'relative', minHeight: '92vh', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', color: '#fff', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0 }}>
           <Image src="/droneshot.jpg" alt="Impact Makers Utrecht community" fill sizes="100vw" priority
-            style={{ objectFit: 'cover', filter: 'brightness(0.42)' }} />
+            style={{ objectFit: 'cover', filter: 'brightness(0.38)' }} />
         </div>
-        {/* gradient overlay */}
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(128,0,32,0.25) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.55) 100%)' }} />
+        {/* navy-tinted gradient overlay */}
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(20,60,90,0.35) 0%, rgba(0,0,0,0.05) 50%, rgba(13,32,48,0.65) 100%)' }} />
 
         <div style={{ position: 'relative', zIndex: 1, padding: '0 1.5rem', maxWidth: 860 }}>
+          {/* Logo prominent in hero */}
+          <div className="fade-up" style={{ marginBottom: 24, display: 'flex', justifyContent: 'center' }}>
+            <Image src="/logo-white.png" alt="Impact Makers Utrecht" width={100} height={100} style={{ objectFit: 'contain', filter: 'drop-shadow(0 4px 16px rgba(0,0,0,0.4))' }} />
+          </div>
           <div className="fade-up">
-            <span className="tag" style={{ background: 'rgba(255,255,255,.18)', color: '#fff', backdropFilter: 'blur(4px)', marginBottom: 20, display: 'inline-block' }}>
+            <span className="tag" style={{ background: 'rgba(255,255,255,.15)', color: '#fff', backdropFilter: 'blur(4px)', marginBottom: 20, display: 'inline-block' }}>
               Utrecht · Student movement · 3 years strong
             </span>
           </div>
@@ -210,15 +176,15 @@ export default function HomePage() {
       </section>
 
       {/* ── STATS BAR ── */}
-      <section style={{ background: THEME.bordeaux, color: '#fff', padding: '1.5rem 0' }}>
+      <section style={{ background: THEME.navy, color: '#fff', padding: '1.5rem 0' }}>
         <div className="section-inner" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))', gap: 16, textAlign: 'center' }}>
           {[
-            { num: '3', label: 'years running' },
-            { num: '4+', label: 'fellowship rounds' },
-            { num: '18–30', label: 'year olds, all volunteers' },
+            { num: '3',   label: 'years running' },
+            { num: '4+',  label: 'fellowship rounds' },
+            { num: '50+', label: 'students joined the programme' },
           ].map(stat => (
             <div key={stat.label}>
-              <div style={{ fontSize: 'clamp(1.5rem, 4vw, 2.5rem)', fontWeight: 900, lineHeight: 1 }}>{stat.num}</div>
+              <div style={{ fontSize: 'clamp(1.5rem, 4vw, 2.5rem)', fontWeight: 900, lineHeight: 1, color: THEME.accent }}>{stat.num}</div>
               <div style={{ fontSize: '0.85rem', opacity: 0.8, marginTop: 4 }}>{stat.label}</div>
             </div>
           ))}
@@ -230,25 +196,28 @@ export default function HomePage() {
         <div className="section-inner">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem', alignItems: 'center' }}>
             <div>
-              <span className="tag" style={{ background: THEME.beigeDeep, color: THEME.bordeaux, marginBottom: 16, display: 'inline-block' }}>Who we are</span>
+              <span className="tag" style={{ background: THEME.beigeDeep, color: THEME.navy, marginBottom: 16, display: 'inline-block' }}>Who we are</span>
               <h2 className="section-title" style={{ color: THEME.dark }}>
                 A student movement<br />that gets things done.
               </h2>
               <p style={{ marginTop: 20, color: THEME.gray, fontSize: '1.05rem', lineHeight: 1.7 }}>
-                Impact Makers Utrecht is a youth-led student movement with a clear mission: to activate and guide socially engaged students. For three years we've been running cycles of 10–50 participants, led by a core team of five dedicated volunteers aged 18–30.
+                Impact Makers Utrecht is a youth-led student movement with a clear mission: to activate and guide socially engaged students. For three years we've been running fellowship cycles with over 50 participants in total, led by a core team of dedicated volunteers from Utrecht University.
               </p>
               <p style={{ marginTop: 16, color: THEME.gray, fontSize: '1.05rem', lineHeight: 1.7 }}>
                 We see it everywhere: students genuinely want to make a difference, but feel overwhelmed by the size and complexity of today's problems — climate change, social inequality, global health. That feeling can lead to paralysis.
               </p>
-              <p style={{ marginTop: 16, color: THEME.bordeaux, fontSize: '1.05rem', fontWeight: 700, lineHeight: 1.7 }}>
+              <p style={{ marginTop: 16, color: THEME.navy, fontSize: '1.05rem', fontWeight: 700, lineHeight: 1.7 }}>
                 We break through that barrier.
               </p>
             </div>
             <div style={{ background: THEME.beige, borderRadius: 20, padding: '2.5rem', position: 'relative', overflow: 'hidden' }}>
-              <div style={{ position: 'absolute', top: 0, right: 0, width: 120, height: 120, background: THEME.bordeaux, opacity: 0.08, borderRadius: '0 20px 0 100%' }} />
-              <h3 style={{ fontWeight: 800, fontSize: '1.2rem', color: THEME.bordeaux, marginBottom: 20 }}>Our approach in one sentence:</h3>
+              {/* Faint logo watermark */}
+              <div style={{ position: 'absolute', bottom: -20, right: -20, width: 140, height: 140, opacity: 0.07 }}>
+                <Image src="/logo.png" alt="" fill style={{ objectFit: 'contain' }} />
+              </div>
+              <h3 style={{ fontWeight: 800, fontSize: '1.2rem', color: THEME.navy, marginBottom: 20 }}>Our approach in one sentence:</h3>
               <p style={{ fontSize: 'clamp(1.1rem, 2.5vw, 1.4rem)', fontWeight: 700, lineHeight: 1.5, color: THEME.dark }}>
-                "We transform <em style={{ color: THEME.bordeaux, fontStyle: 'normal' }}>'it's too complex'</em> into <em style={{ color: THEME.bordeaux, fontStyle: 'normal' }}>'where's the best place to start?'</em>"
+                "We transform <em style={{ color: THEME.accent, fontStyle: 'normal' }}>'it's too complex'</em> into <em style={{ color: THEME.accent, fontStyle: 'normal' }}>'where's the best place to start?'</em>"
               </p>
               <p style={{ marginTop: 20, color: THEME.gray, fontSize: '0.95rem', lineHeight: 1.6 }}>
                 We help you narrow down your broad ambitions, connect you with existing initiatives, or guide you in launching your own project. Inaction becomes participation.
@@ -264,7 +233,7 @@ export default function HomePage() {
       <section id="programme" style={{ padding: '5rem 0', background: THEME.beige }}>
         <div className="section-inner">
           <div style={{ textAlign: 'center', maxWidth: 700, margin: '0 auto 3.5rem' }}>
-            <span className="tag" style={{ background: THEME.bordeaux, color: '#fff', marginBottom: 16, display: 'inline-block' }}>The Fellowship Programme</span>
+            <span className="tag" style={{ background: THEME.navy, color: '#fff', marginBottom: 16, display: 'inline-block' }}>The Fellowship Programme</span>
             <h2 className="section-title" style={{ color: THEME.dark }}>Four sessions. Eight weeks. One action plan.</h2>
             <p style={{ marginTop: 16, color: THEME.gray, fontSize: '1.05rem', lineHeight: 1.7 }}>
               In small groups of 4–8 students, guided by two trained facilitators, you work through a funnel that takes you from "I want to do something good" to a concrete, real-world action plan.
@@ -273,18 +242,17 @@ export default function HomePage() {
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 24 }}>
-            {STEPS.map((step, i) => {
+            {STEPS.map((step) => {
               const Icon = step.icon;
               return (
                 <div key={step.number} style={{
                   background: '#fff', borderRadius: 16, padding: '2rem',
-                  boxShadow: '0 2px 16px rgba(0,0,0,.06)',
-                  borderTop: `4px solid ${THEME.bordeaux}`,
-                  position: 'relative',
+                  boxShadow: '0 2px 16px rgba(20,60,90,.08)',
+                  borderTop: `4px solid ${THEME.navy}`,
                 }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 16 }}>
                     <span style={{ fontSize: '2.5rem', fontWeight: 900, color: THEME.beigeDeep, lineHeight: 1 }}>{step.number}</span>
-                    <div style={{ background: THEME.bordeaux, borderRadius: 10, padding: 8 }}>
+                    <div style={{ background: THEME.navy, borderRadius: 10, padding: 8 }}>
                       <Icon size={18} color="#fff" />
                     </div>
                   </div>
@@ -309,13 +277,13 @@ export default function HomePage() {
       <section style={{ padding: '5rem 0', background: THEME.white }}>
         <div className="section-inner" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem', alignItems: 'center' }}>
           <div>
-            <span className="tag" style={{ background: THEME.beigeDeep, color: THEME.bordeaux, marginBottom: 16, display: 'inline-block' }}>See it in action</span>
+            <span className="tag" style={{ background: THEME.beigeDeep, color: THEME.navy, marginBottom: 16, display: 'inline-block' }}>See it in action</span>
             <h2 className="section-title" style={{ color: THEME.dark }}>What does making impact actually look like?</h2>
             <p style={{ marginTop: 16, color: THEME.gray, fontSize: '1.05rem', lineHeight: 1.7 }}>
               Watch this short video to understand what drives us — and why this moment matters for students who want to do more than just talk about change.
             </p>
           </div>
-          <div style={{ borderRadius: 16, overflow: 'hidden', boxShadow: '0 8px 32px rgba(0,0,0,.12)', aspectRatio: '16/9', position: 'relative' }}>
+          <div style={{ borderRadius: 16, overflow: 'hidden', boxShadow: '0 8px 32px rgba(20,60,90,.15)', aspectRatio: '16/9', position: 'relative' }}>
             <iframe
               width="100%" height="100%"
               src="https://www.youtube.com/embed/yKcU7GTqxps"
@@ -334,7 +302,7 @@ export default function HomePage() {
       <section id="stories" style={{ padding: '5rem 0', background: THEME.beige }}>
         <div className="section-inner">
           <div style={{ textAlign: 'center', maxWidth: 600, margin: '0 auto 3.5rem' }}>
-            <span className="tag" style={{ background: THEME.beigeDeep, color: THEME.bordeaux, marginBottom: 16, display: 'inline-block' }}>It works</span>
+            <span className="tag" style={{ background: THEME.beigeDeep, color: THEME.navy, marginBottom: 16, display: 'inline-block' }}>It works</span>
             <h2 className="section-title" style={{ color: THEME.dark }}>Real students. Real impact.</h2>
             <p style={{ marginTop: 16, color: THEME.gray, fontSize: '1.05rem' }}>
               After four successful rounds, here's what our alumni have gone on to do.
@@ -342,18 +310,41 @@ export default function HomePage() {
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 24 }}>
             {STORIES.map((s, i) => (
-              <div key={i} style={{ background: '#fff', borderRadius: 16, padding: '2rem', boxShadow: '0 2px 12px rgba(0,0,0,.06)' }}>
-                <div style={{ color: THEME.bordeaux, fontSize: '2.5rem', lineHeight: 1, fontFamily: 'Georgia, serif', marginBottom: 12 }}>"</div>
+              <div key={i} style={{ background: '#fff', borderRadius: 16, padding: '2rem', boxShadow: '0 2px 12px rgba(20,60,90,.07)', borderLeft: `4px solid ${THEME.accent}` }}>
+                <div style={{ color: THEME.accent, fontSize: '2.5rem', lineHeight: 1, fontFamily: 'Georgia, serif', marginBottom: 12 }}>"</div>
                 <p style={{ color: THEME.dark, fontSize: '1rem', lineHeight: 1.7, fontStyle: 'italic', marginBottom: 20 }}>{s.quote}</p>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                  <div style={{ width: 36, height: 36, borderRadius: '50%', background: THEME.bordeaux, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <span style={{ color: '#fff', fontSize: '0.75rem', fontWeight: 700 }}>IM</span>
-                  </div>
-                  <div>
-                    <div style={{ fontWeight: 700, fontSize: '0.85rem', color: THEME.dark }}>{s.name}</div>
-                    <div style={{ fontSize: '0.75rem', color: THEME.gray }}>{s.tag}</div>
-                  </div>
+                <span className="tag" style={{ background: THEME.beige, color: THEME.navy, fontSize: '0.7rem' }}>{s.tag}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <div className="divider" />
+
+      {/* ── TEAM ── */}
+      <section style={{ padding: '5rem 0', background: THEME.white }}>
+        <div className="section-inner">
+          <div style={{ textAlign: 'center', maxWidth: 640, margin: '0 auto 3.5rem' }}>
+            <span className="tag" style={{ background: THEME.beigeDeep, color: THEME.navy, marginBottom: 16, display: 'inline-block' }}>The people behind it</span>
+            <h2 className="section-title" style={{ color: THEME.dark }}>Meet the organisers</h2>
+            <p style={{ marginTop: 16, color: THEME.gray, fontSize: '1.05rem', lineHeight: 1.7 }}>
+              We're four students at Utrecht University who believe that every student has the potential to create real-world impact — and decided to build something to prove it.
+            </p>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 24, maxWidth: 800, margin: '0 auto' }}>
+            {TEAM.map((member) => (
+              <div key={member.name} style={{ textAlign: 'center', padding: '2rem 1rem' }}>
+                <div style={{
+                  width: 80, height: 80, borderRadius: '50%',
+                  background: `linear-gradient(135deg, ${THEME.navy}, ${THEME.accent})`,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  margin: '0 auto 16px', boxShadow: '0 4px 20px rgba(20,60,90,.2)'
+                }}>
+                  <span style={{ color: '#fff', fontSize: '1.6rem', fontWeight: 900 }}>{member.initials}</span>
                 </div>
+                <div style={{ fontWeight: 800, fontSize: '1.1rem', color: THEME.dark }}>{member.name}</div>
+                <div style={{ fontSize: '0.85rem', color: THEME.gray, marginTop: 4 }}>Utrecht University</div>
               </div>
             ))}
           </div>
@@ -363,10 +354,10 @@ export default function HomePage() {
       <div className="divider" />
 
       {/* ── NGOs ── */}
-      <section style={{ padding: '5rem 0', background: THEME.white }}>
+      <section style={{ padding: '5rem 0', background: THEME.beige }}>
         <div className="section-inner">
           <div style={{ textAlign: 'center', maxWidth: 640, margin: '0 auto 3.5rem' }}>
-            <span className="tag" style={{ background: THEME.beigeDeep, color: THEME.bordeaux, marginBottom: 16, display: 'inline-block' }}>Where alumni ended up</span>
+            <span className="tag" style={{ background: THEME.navy, color: '#fff', marginBottom: 16, display: 'inline-block' }}>Where alumni ended up</span>
             <h2 className="section-title" style={{ color: THEME.dark }}>Organisations you could join</h2>
             <p style={{ marginTop: 16, color: THEME.gray, fontSize: '1.05rem' }}>
               These are just some of the impactful organisations our alumni have connected with through the fellowship.
@@ -375,11 +366,11 @@ export default function HomePage() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: 16 }}>
             {NGOS.map((ngo, i) => (
               <a key={i} href={ngo.href} target="_blank" rel="noopener noreferrer"
-                style={{ position: 'relative', borderRadius: 14, overflow: 'hidden', aspectRatio: '1', display: 'block', boxShadow: '0 2px 12px rgba(0,0,0,.08)', transition: 'transform .2s ease' }}
+                style={{ position: 'relative', borderRadius: 14, overflow: 'hidden', aspectRatio: '1', display: 'block', boxShadow: '0 2px 12px rgba(20,60,90,.1)', transition: 'transform .2s ease' }}
                 onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.03)')}
                 onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}>
                 <Image src={ngo.src} alt={ngo.name} fill sizes="(max-width: 768px) 33vw, 18vw" style={{ objectFit: 'cover' }} />
-                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,.55) 0%, transparent 50%)', display: 'flex', alignItems: 'flex-end', padding: 12 }}>
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(13,32,48,.65) 0%, transparent 55%)', display: 'flex', alignItems: 'flex-end', padding: 12 }}>
                   <span style={{ color: '#fff', fontSize: '0.75rem', fontWeight: 700, lineHeight: 1.2 }}>{ngo.name}</span>
                 </div>
               </a>
@@ -389,9 +380,15 @@ export default function HomePage() {
       </section>
 
       {/* ── JOIN CTA ── */}
-      <section id="join" style={{ padding: '6rem 0', background: THEME.bordeaux, color: '#fff', textAlign: 'center' }}>
-        <div className="section-inner">
-          <span className="tag" style={{ background: 'rgba(255,255,255,.18)', color: '#fff', backdropFilter: 'blur(4px)', marginBottom: 20, display: 'inline-block' }}>
+      <section id="join" style={{ padding: '6rem 0', background: THEME.navy, color: '#fff', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
+        {/* Faint logo watermark in CTA */}
+        <div style={{ position: 'absolute', right: -60, bottom: -60, width: 360, height: 360, opacity: 0.06, pointerEvents: 'none' }}>
+          <Image src="/logo-white.png" alt="" fill style={{ objectFit: 'contain' }} />
+        </div>
+        <div className="section-inner" style={{ position: 'relative', zIndex: 1 }}>
+          <Image src="/logo-white.png" alt="Impact Makers Utrecht" width={72} height={72}
+            style={{ objectFit: 'contain', margin: '0 auto 20px', display: 'block', filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.3))' }} />
+          <span className="tag" style={{ background: 'rgba(255,255,255,.15)', color: '#fff', backdropFilter: 'blur(4px)', marginBottom: 20, display: 'inline-block' }}>
             Applications open now
           </span>
           <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 900, lineHeight: 1.1, maxWidth: 760, margin: '0 auto' }}>
@@ -409,7 +406,7 @@ export default function HomePage() {
               Join our WhatsApp
             </a>
           </div>
-          <p style={{ marginTop: 20, opacity: 0.65, fontSize: '0.85rem' }}>
+          <p style={{ marginTop: 24, opacity: 0.6, fontSize: '0.85rem' }}>
             Questions? Reach out at <a href="mailto:wimtenberge1@gmail.com" style={{ color: '#fff', textDecoration: 'underline' }}>wimtenberge1@gmail.com</a>
           </p>
         </div>
@@ -418,9 +415,9 @@ export default function HomePage() {
       {/* ── FOOTER ── */}
       <footer style={{ background: THEME.dark, color: '#fff', padding: '2.5rem 0' }}>
         <div className="section-inner" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 20, textAlign: 'center' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            <Image src="/favicon.png" alt="Impact Makers Utrecht" width={28} height={28} style={{ borderRadius: 6, opacity: 0.9 }} />
-            <span style={{ fontWeight: 800, fontSize: '0.95rem', color: '#fff' }}>Impact Makers Utrecht</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+            <Image src="/logo-white.png" alt="Impact Makers Utrecht" width={48} height={48} style={{ objectFit: 'contain', opacity: 0.9 }} />
+            <span style={{ fontWeight: 800, fontSize: '1rem', color: '#fff', lineHeight: 1.3 }}>Impact Makers<br />Utrecht</span>
           </div>
           <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', justifyContent: 'center' }}>
             <a href="https://www.instagram.com/impactmakersutrecht/" target="_blank" rel="noopener noreferrer"
@@ -442,7 +439,7 @@ export default function HomePage() {
               Email
             </a>
           </div>
-          <p style={{ color: 'rgba(255,255,255,.45)', fontSize: '0.8rem' }}>
+          <p style={{ color: 'rgba(255,255,255,.4)', fontSize: '0.8rem' }}>
             © {new Date().getFullYear()} Impact Makers Utrecht · All volunteers · Utrecht, Netherlands
           </p>
         </div>

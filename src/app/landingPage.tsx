@@ -201,10 +201,10 @@ export default function HomePage() {
                 A student movement<br />that gets things done.
               </h2>
               <p style={{ marginTop: 20, color: THEME.gray, fontSize: '1.05rem', lineHeight: 1.7 }}>
-                Impact Makers Utrecht is a youth-led student movement with a clear mission: to activate and guide socially engaged students. For three years we've been running fellowship cycles with over 50 participants in total, led by a core team of dedicated volunteers from Utrecht University.
+                Impact Makers Utrecht is a youth-led student movement with a clear mission: to activate and guide socially engaged students. For three years we&apos;ve been running fellowship cycles with over 50 participants in total, led by a core team of dedicated volunteers from Utrecht University.
               </p>
               <p style={{ marginTop: 16, color: THEME.gray, fontSize: '1.05rem', lineHeight: 1.7 }}>
-                We see it everywhere: students genuinely want to make a difference, but feel overwhelmed by the size and complexity of today's problems — climate change, social inequality, global health. That feeling can lead to paralysis.
+                We see it everywhere: students genuinely want to make a difference, but feel overwhelmed by the size and complexity of today&apos;s problems — climate change, social inequality, global health. That feeling can lead to paralysis.
               </p>
               <p style={{ marginTop: 16, color: THEME.navy, fontSize: '1.05rem', fontWeight: 700, lineHeight: 1.7 }}>
                 We break through that barrier.
@@ -217,7 +217,7 @@ export default function HomePage() {
               </div>
               <h3 style={{ fontWeight: 800, fontSize: '1.2rem', color: THEME.navy, marginBottom: 20 }}>Our approach in one sentence:</h3>
               <p style={{ fontSize: 'clamp(1.1rem, 2.5vw, 1.4rem)', fontWeight: 700, lineHeight: 1.5, color: THEME.dark }}>
-                "We transform <em style={{ color: THEME.accent, fontStyle: 'normal' }}>'it's too complex'</em> into <em style={{ color: THEME.accent, fontStyle: 'normal' }}>'where's the best place to start?'</em>"
+                &ldquo;We transform <em style={{ color: THEME.accent, fontStyle: 'normal' }}>&lsquo;it&apos;s too complex&rsquo;</em> into <em style={{ color: THEME.accent, fontStyle: 'normal' }}>&lsquo;where&apos;s the best place to start?&rsquo;</em>&rdquo;
               </p>
               <p style={{ marginTop: 20, color: THEME.gray, fontSize: '0.95rem', lineHeight: 1.6 }}>
                 We help you narrow down your broad ambitions, connect you with existing initiatives, or guide you in launching your own project. Inaction becomes participation.
@@ -236,7 +236,7 @@ export default function HomePage() {
             <span className="tag" style={{ background: THEME.navy, color: '#fff', marginBottom: 16, display: 'inline-block' }}>The Fellowship Programme</span>
             <h2 className="section-title" style={{ color: THEME.dark }}>Four sessions. Eight weeks. One action plan.</h2>
             <p style={{ marginTop: 16, color: THEME.gray, fontSize: '1.05rem', lineHeight: 1.7 }}>
-              In small groups of 4–8 students, guided by two trained facilitators, you work through a funnel that takes you from "I want to do something good" to a concrete, real-world action plan.
+              In small groups of 4–8 students, guided by two trained facilitators, you work through a funnel that takes you from &ldquo;I want to do something good&rdquo; to a concrete, real-world action plan.
             </p>
             <p style={{ marginTop: 8, color: THEME.gray, fontSize: '0.95rem' }}>Each session: 1.5 hrs prep reading + 1.5 hrs on location · Fully free · In Utrecht</p>
           </div>
@@ -305,13 +305,13 @@ export default function HomePage() {
             <span className="tag" style={{ background: THEME.beigeDeep, color: THEME.navy, marginBottom: 16, display: 'inline-block' }}>It works</span>
             <h2 className="section-title" style={{ color: THEME.dark }}>Real students. Real impact.</h2>
             <p style={{ marginTop: 16, color: THEME.gray, fontSize: '1.05rem' }}>
-              After four successful rounds, here's what our alumni have gone on to do.
+              After four successful rounds, here&apos;s what our alumni have gone on to do.
             </p>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 24 }}>
             {STORIES.map((s, i) => (
               <div key={i} style={{ background: '#fff', borderRadius: 16, padding: '2rem', boxShadow: '0 2px 12px rgba(20,60,90,.07)', borderLeft: `4px solid ${THEME.accent}` }}>
-                <div style={{ color: THEME.accent, fontSize: '2.5rem', lineHeight: 1, fontFamily: 'Georgia, serif', marginBottom: 12 }}>"</div>
+                <div style={{ color: THEME.accent, fontSize: '2.5rem', lineHeight: 1, fontFamily: 'Georgia, serif', marginBottom: 12 }}>&ldquo;</div>
                 <p style={{ color: THEME.dark, fontSize: '1rem', lineHeight: 1.7, fontStyle: 'italic', marginBottom: 20 }}>{s.quote}</p>
                 <span className="tag" style={{ background: THEME.beige, color: THEME.navy, fontSize: '0.7rem' }}>{s.tag}</span>
               </div>
@@ -329,7 +329,7 @@ export default function HomePage() {
             <span className="tag" style={{ background: THEME.beigeDeep, color: THEME.navy, marginBottom: 16, display: 'inline-block' }}>The people behind it</span>
             <h2 className="section-title" style={{ color: THEME.dark }}>Meet the organisers</h2>
             <p style={{ marginTop: 16, color: THEME.gray, fontSize: '1.05rem', lineHeight: 1.7 }}>
-              We're four students at Utrecht University who believe that every student has the potential to create real-world impact — and decided to build something to prove it.
+              We&apos;re four students at Utrecht University who believe that every student has the potential to create real-world impact — and decided to build something to prove it.
             </p>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 24, maxWidth: 800, margin: '0 auto' }}>

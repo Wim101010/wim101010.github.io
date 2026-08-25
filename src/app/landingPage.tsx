@@ -194,7 +194,7 @@ export default function HomePage() {
           <h1 className="fade-up fade-up-1" style={{ fontSize: 'clamp(2.4rem, 7vw, 5rem)', fontWeight: 900, lineHeight: 1.05, letterSpacing: '-0.02em', marginTop: 12 }}>
             Your ambition.<br />Real impact.
           </h1>
-          <p className="fade-up fade-up-2" style={{ marginTop: 24, fontSize: 'clamp(1rem, 2.5vw, 1.25rem)', opacity: 0.92, maxWidth: 660, margin: '24px auto 0' }}>
+          <p className="fade-up fade-up-2" style={{ fontSize: 'clamp(1rem, 2.5vw, 1.25rem)', opacity: 0.92, maxWidth: 660, margin: '24px auto 0' }}>
             You want to change the world — but where do you start? Impact Makers Utrecht guides students through a proven 4-step fellowship to turn big ideas into concrete action.
           </p>
           <div className="fade-up fade-up-3" style={{ marginTop: 36, display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -211,7 +211,7 @@ export default function HomePage() {
 
       {/* ── STATS BAR ── */}
       <section style={{ background: THEME.bordeaux, color: '#fff', padding: '1.5rem 0' }}>
-        <div className="section-inner" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16, textAlign: 'center' }}>
+        <div className="section-inner" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))', gap: 16, textAlign: 'center' }}>
           {[
             { num: '3', label: 'years running' },
             { num: '4+', label: 'fellowship rounds' },
@@ -320,10 +320,9 @@ export default function HomePage() {
               width="100%" height="100%"
               src="https://www.youtube.com/embed/yKcU7GTqxps"
               title="What do we do?"
-              frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
-              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}
+              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 0 }}
             />
           </div>
         </div>
@@ -373,7 +372,7 @@ export default function HomePage() {
               These are just some of the impactful organisations our alumni have connected with through the fellowship.
             </p>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: 16 }}>
             {NGOS.map((ngo, i) => (
               <a key={i} href={ngo.href} target="_blank" rel="noopener noreferrer"
                 style={{ position: 'relative', borderRadius: 14, overflow: 'hidden', aspectRatio: '1', display: 'block', boxShadow: '0 2px 12px rgba(0,0,0,.08)', transition: 'transform .2s ease' }}

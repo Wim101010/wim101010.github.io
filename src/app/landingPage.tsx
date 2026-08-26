@@ -78,10 +78,26 @@ const STORIES = [
 ];
 
 const TEAM = [
-  { name: "Wim",   initials: "W" },
-  { name: "Jeroen", initials: "J" },
-  { name: "Tuana",  initials: "T" },
-  { name: "Hugo",   initials: "H" },
+  {
+    name: "Wim",
+    photo: "/Wim.png",
+    bio: "Hi, I am Wim. I am living in Utrecht on the IBB and do a research master in Economics. I do research on how to decrease world-wide inequality. In my free time I love to boulder and party with friends.",
+  },
+  {
+    name: "Jeroen",
+    photo: "/Jeroen.png",
+    bio: "Utrecht University student",
+  },
+  {
+    name: "Tuana",
+    photo: "/Tuana.png",
+    bio: "Utrecht University student",
+  },
+  {
+    name: "Hugo",
+    photo: "/Hugo.png",
+    bio: "Utrecht University student",
+  },
 ];
 
 export default function HomePage() {
@@ -332,19 +348,24 @@ export default function HomePage() {
               We&apos;re four students at Utrecht University who believe that every student has the potential to create real-world impact — and decided to build something to prove it.
             </p>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 24, maxWidth: 800, margin: '0 auto' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 28 }}>
             {TEAM.map((member) => (
-              <div key={member.name} style={{ textAlign: 'center', padding: '2rem 1rem' }}>
+              <div key={member.name} style={{
+                background: THEME.beige, borderRadius: 20, padding: '2rem 1.5rem',
+                textAlign: 'center', boxShadow: '0 2px 16px rgba(20,60,90,.07)'
+              }}>
                 <div style={{
-                  width: 80, height: 80, borderRadius: '50%',
-                  background: `linear-gradient(135deg, ${THEME.navy}, ${THEME.accent})`,
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  margin: '0 auto 16px', boxShadow: '0 4px 20px rgba(20,60,90,.2)'
+                  width: 100, height: 100, borderRadius: '50%',
+                  overflow: 'hidden', margin: '0 auto 16px',
+                  border: `3px solid ${THEME.accent}`,
+                  boxShadow: '0 4px 20px rgba(20,60,90,.18)',
+                  position: 'relative',
                 }}>
-                  <span style={{ color: '#fff', fontSize: '1.6rem', fontWeight: 900 }}>{member.initials}</span>
+                  <Image src={member.photo} alt={member.name} fill sizes="100px" style={{ objectFit: 'cover' }} />
                 </div>
-                <div style={{ fontWeight: 800, fontSize: '1.1rem', color: THEME.dark }}>{member.name}</div>
-                <div style={{ fontSize: '0.85rem', color: THEME.gray, marginTop: 4 }}>Utrecht University</div>
+                <div style={{ fontWeight: 800, fontSize: '1.15rem', color: THEME.dark, marginBottom: 4 }}>{member.name}</div>
+                <div style={{ fontSize: '0.85rem', color: THEME.navy, fontWeight: 600, marginBottom: 10 }}>Utrecht University</div>
+                <p style={{ fontSize: '0.875rem', color: THEME.gray, lineHeight: 1.6 }}>{member.bio}</p>
               </div>
             ))}
           </div>

@@ -10,12 +10,14 @@ const WHATSAPP_URL = "https://chat.whatsapp.com/HtnrgFwcNvxEBk4bbJy4vq";
 
 const THEME = {
   white: "#ffffff",
+  pageLight: "#EFF8FF",   // off-white tint — replaces pure white sections
   navy: "#143C5A",
   navyLight: "#1E4E72",
   accent: "#328CBE",
+  accentLight: "#56B0E0",
   gray: "#4b5563",
-  beige: "#EEF6FA",
-  beigeDeep: "#D4EAF5",
+  beige: "#C8E6F7",       // more saturated
+  beigeDeep: "#9ACEED",   // more saturated
   dark: "#0D2030",
 };
 
@@ -41,24 +43,28 @@ const STEPS = [
     title: "Theme",
     desc: "You start with a broad ambition and narrow it down to a specific societal theme that fires you up.",
     icon: Target,
+    color: "#143C5A",
   },
   {
     number: "02",
     title: "Form",
     desc: "We explore together how you want to create impact — volunteering, research, activism, or career choices.",
     icon: Zap,
+    color: "#1A5F8A",
   },
   {
     number: "03",
     title: "Network",
     desc: "We map out which organisation or group of people is the best fit for you to work with.",
     icon: Users,
+    color: "#328CBE",
   },
   {
     number: "04",
     title: "Action",
     desc: "You leave with a concrete, immediately executable action plan. Not someday — now.",
     icon: Heart,
+    color: "#56B0E0",
   },
 ];
 
@@ -66,14 +72,20 @@ const STORIES = [
   {
     quote: "I launched an endometriosis awareness campaign that reached thousands of people.",
     tag: "Round 1",
+    color: "#143C5A",
+    bg: "#D6EEFA",
   },
   {
     quote: "I found my place at Buddy-to-Buddy and now volunteer every week. Impact Makers gave me the push I needed.",
     tag: "Round 2",
+    color: "#328CBE",
+    bg: "#C2E4F5",
   },
   {
     quote: "Through the fellowship I figured out exactly where I wanted to go — I ended up doing international volunteer work.",
     tag: "Round 3",
+    color: "#1A5F8A",
+    bg: "#CBE8F6",
   },
 ];
 
@@ -82,21 +94,29 @@ const TEAM = [
     name: "Wim",
     photo: "/Wim.png",
     bio: "Hi, I am Wim. I am living in Utrecht on the IBB and do a research master in Economics. I do research on how to decrease world-wide inequality. In my free time I love to boulder and party with friends.",
+    cardBg: "linear-gradient(160deg, #C8E6F7 0%, #A8D4EE 100%)",
+    borderColor: "#143C5A",
   },
   {
     name: "Jeroen",
     photo: "/Jeroen.png",
     bio: "Utrecht University student",
+    cardBg: "linear-gradient(160deg, #B8DCF5 0%, #9ACEED 100%)",
+    borderColor: "#1A5F8A",
   },
   {
     name: "Tuana",
     photo: "/Tuana.png",
     bio: "Utrecht University student",
+    cardBg: "linear-gradient(160deg, #C8E6F7 0%, #A8D4EE 100%)",
+    borderColor: "#328CBE",
   },
   {
     name: "Hugo",
     photo: "/Hugo.png",
     bio: "Utrecht University student",
+    cardBg: "linear-gradient(160deg, #B8DCF5 0%, #9ACEED 100%)",
+    borderColor: "#56B0E0",
   },
 ];
 
@@ -192,7 +212,7 @@ export default function HomePage() {
       </section>
 
       {/* ── STATS BAR ── */}
-      <section style={{ background: THEME.navy, color: '#fff', padding: '1.5rem 0' }}>
+      <section style={{ background: 'linear-gradient(135deg, #0D2030 0%, #143C5A 50%, #1A5F8A 100%)', color: '#fff', padding: '1.5rem 0' }}>
         <div className="section-inner" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))', gap: 16, textAlign: 'center' }}>
           {[
             { num: '3',   label: 'years running' },
@@ -208,7 +228,7 @@ export default function HomePage() {
       </section>
 
       {/* ── ABOUT ── */}
-      <section id="about" style={{ padding: '5rem 0', background: THEME.white }}>
+      <section id="about" style={{ padding: '5rem 0', background: 'linear-gradient(160deg, #EFF8FF 0%, #D6EEFA 100%)' }}>
         <div className="section-inner">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem', alignItems: 'center' }}>
             <div>
@@ -226,7 +246,7 @@ export default function HomePage() {
                 We break through that barrier.
               </p>
             </div>
-            <div style={{ background: THEME.beige, borderRadius: 20, padding: '2.5rem', position: 'relative', overflow: 'hidden' }}>
+            <div style={{ background: 'linear-gradient(135deg, #B8DCF5 0%, #9ACEED 100%)', borderRadius: 20, padding: '2.5rem', position: 'relative', overflow: 'hidden' }}>
               {/* Faint logo watermark */}
               <div style={{ position: 'absolute', bottom: -20, right: -20, width: 140, height: 140, opacity: 0.07 }}>
                 <Image src="/logo.png" alt="" fill style={{ objectFit: 'contain' }} />
@@ -246,7 +266,7 @@ export default function HomePage() {
       <div className="divider" />
 
       {/* ── THE FELLOWSHIP ── */}
-      <section id="programme" style={{ padding: '5rem 0', background: THEME.beige }}>
+      <section id="programme" style={{ padding: '5rem 0', background: 'linear-gradient(135deg, #C8E6F7 0%, #B0D8F2 100%)' }}>
         <div className="section-inner">
           <div style={{ textAlign: 'center', maxWidth: 700, margin: '0 auto 3.5rem' }}>
             <span className="tag" style={{ background: THEME.navy, color: '#fff', marginBottom: 16, display: 'inline-block' }}>The Fellowship Programme</span>
@@ -262,13 +282,14 @@ export default function HomePage() {
               const Icon = step.icon;
               return (
                 <div key={step.number} style={{
-                  background: '#fff', borderRadius: 16, padding: '2rem',
-                  boxShadow: '0 2px 16px rgba(20,60,90,.08)',
-                  borderTop: `4px solid ${THEME.navy}`,
+                  background: `linear-gradient(160deg, #fff 60%, ${step.color}18 100%)`,
+                  borderRadius: 16, padding: '2rem',
+                  boxShadow: '0 4px 20px rgba(20,60,90,.10)',
+                  borderTop: `4px solid ${step.color}`,
                 }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 16 }}>
-                    <span style={{ fontSize: '2.5rem', fontWeight: 900, color: THEME.beigeDeep, lineHeight: 1 }}>{step.number}</span>
-                    <div style={{ background: THEME.navy, borderRadius: 10, padding: 8 }}>
+                    <span style={{ fontSize: '2.5rem', fontWeight: 900, color: step.color, opacity: 0.25, lineHeight: 1 }}>{step.number}</span>
+                    <div style={{ background: `linear-gradient(135deg, ${step.color}, ${step.color}bb)`, borderRadius: 10, padding: 8 }}>
                       <Icon size={18} color="#fff" />
                     </div>
                   </div>
@@ -290,7 +311,7 @@ export default function HomePage() {
       <div className="divider" />
 
       {/* ── VIDEO ── */}
-      <section style={{ padding: '5rem 0', background: THEME.white }}>
+      <section style={{ padding: '5rem 0', background: 'linear-gradient(160deg, #EFF8FF 0%, #C8E6F7 100%)' }}>
         <div className="section-inner" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem', alignItems: 'center' }}>
           <div>
             <span className="tag" style={{ background: THEME.beigeDeep, color: THEME.navy, marginBottom: 16, display: 'inline-block' }}>See it in action</span>
@@ -315,7 +336,7 @@ export default function HomePage() {
       <div className="divider" />
 
       {/* ── STORIES ── */}
-      <section id="stories" style={{ padding: '5rem 0', background: THEME.beige }}>
+      <section id="stories" style={{ padding: '5rem 0', background: 'linear-gradient(135deg, #9ACEED 0%, #B8DCF5 100%)' }}>
         <div className="section-inner">
           <div style={{ textAlign: 'center', maxWidth: 600, margin: '0 auto 3.5rem' }}>
             <span className="tag" style={{ background: THEME.beigeDeep, color: THEME.navy, marginBottom: 16, display: 'inline-block' }}>It works</span>
@@ -326,10 +347,10 @@ export default function HomePage() {
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 24 }}>
             {STORIES.map((s, i) => (
-              <div key={i} style={{ background: '#fff', borderRadius: 16, padding: '2rem', boxShadow: '0 2px 12px rgba(20,60,90,.07)', borderLeft: `4px solid ${THEME.accent}` }}>
-                <div style={{ color: THEME.accent, fontSize: '2.5rem', lineHeight: 1, fontFamily: 'Georgia, serif', marginBottom: 12 }}>&ldquo;</div>
-                <p style={{ color: THEME.dark, fontSize: '1rem', lineHeight: 1.7, fontStyle: 'italic', marginBottom: 20 }}>{s.quote}</p>
-                <span className="tag" style={{ background: THEME.beige, color: THEME.navy, fontSize: '0.7rem' }}>{s.tag}</span>
+              <div key={i} style={{ background: s.bg, borderRadius: 16, padding: '2rem', boxShadow: '0 4px 20px rgba(20,60,90,.12)', borderLeft: `5px solid ${s.color}` }}>
+                <div style={{ color: s.color, fontSize: '3rem', lineHeight: 0.9, fontFamily: 'Georgia, serif', marginBottom: 16, fontWeight: 700 }}>&ldquo;</div>
+                <p style={{ color: THEME.dark, fontSize: '1rem', lineHeight: 1.75, fontStyle: 'italic', marginBottom: 20 }}>{s.quote}</p>
+                <span className="tag" style={{ background: s.color, color: '#fff', fontSize: '0.7rem' }}>{s.tag}</span>
               </div>
             ))}
           </div>
@@ -339,7 +360,7 @@ export default function HomePage() {
       <div className="divider" />
 
       {/* ── TEAM ── */}
-      <section style={{ padding: '5rem 0', background: THEME.white }}>
+      <section style={{ padding: '5rem 0', background: 'linear-gradient(160deg, #EFF8FF 0%, #D6EEFA 100%)' }}>
         <div className="section-inner">
           <div style={{ textAlign: 'center', maxWidth: 640, margin: '0 auto 3.5rem' }}>
             <span className="tag" style={{ background: THEME.beigeDeep, color: THEME.navy, marginBottom: 16, display: 'inline-block' }}>The people behind it</span>
@@ -351,21 +372,22 @@ export default function HomePage() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 28 }}>
             {TEAM.map((member) => (
               <div key={member.name} style={{
-                background: THEME.beige, borderRadius: 20, padding: '2rem 1.5rem',
-                textAlign: 'center', boxShadow: '0 2px 16px rgba(20,60,90,.07)'
+                background: member.cardBg, borderRadius: 20, padding: '2rem 1.5rem',
+                textAlign: 'center', boxShadow: '0 4px 24px rgba(20,60,90,.12)',
+                borderTop: `4px solid ${member.borderColor}`,
               }}>
                 <div style={{
                   width: 100, height: 100, borderRadius: '50%',
                   overflow: 'hidden', margin: '0 auto 16px',
-                  border: `3px solid ${THEME.accent}`,
-                  boxShadow: '0 4px 20px rgba(20,60,90,.18)',
+                  border: `3px solid ${member.borderColor}`,
+                  boxShadow: `0 4px 20px ${member.borderColor}44`,
                   position: 'relative',
                 }}>
                   <Image src={member.photo} alt={member.name} fill sizes="100px" style={{ objectFit: 'cover' }} />
                 </div>
                 <div style={{ fontWeight: 800, fontSize: '1.15rem', color: THEME.dark, marginBottom: 4 }}>{member.name}</div>
-                <div style={{ fontSize: '0.85rem', color: THEME.navy, fontWeight: 600, marginBottom: 10 }}>Utrecht University</div>
-                <p style={{ fontSize: '0.875rem', color: THEME.gray, lineHeight: 1.6 }}>{member.bio}</p>
+                <div style={{ fontSize: '0.85rem', color: member.borderColor, fontWeight: 600, marginBottom: 10 }}>Utrecht University</div>
+                <p style={{ fontSize: '0.875rem', color: THEME.dark, lineHeight: 1.6, opacity: 0.8 }}>{member.bio}</p>
               </div>
             ))}
           </div>
@@ -375,7 +397,7 @@ export default function HomePage() {
       <div className="divider" />
 
       {/* ── NGOs ── */}
-      <section style={{ padding: '5rem 0', background: THEME.beige }}>
+      <section style={{ padding: '5rem 0', background: 'linear-gradient(135deg, #B0D8F2 0%, #9ACEED 100%)' }}>
         <div className="section-inner">
           <div style={{ textAlign: 'center', maxWidth: 640, margin: '0 auto 3.5rem' }}>
             <span className="tag" style={{ background: THEME.navy, color: '#fff', marginBottom: 16, display: 'inline-block' }}>Where alumni ended up</span>
@@ -401,7 +423,7 @@ export default function HomePage() {
       </section>
 
       {/* ── JOIN CTA ── */}
-      <section id="join" style={{ padding: '6rem 0', background: THEME.navy, color: '#fff', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
+      <section id="join" style={{ padding: '6rem 0', background: 'linear-gradient(135deg, #0A1E2E 0%, #143C5A 45%, #1A5F8A 100%)', color: '#fff', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
         {/* Faint logo watermark in CTA */}
         <div style={{ position: 'absolute', right: -60, bottom: -60, width: 360, height: 360, opacity: 0.06, pointerEvents: 'none' }}>
           <Image src="/logo-white.png" alt="" fill style={{ objectFit: 'contain' }} />
@@ -434,7 +456,7 @@ export default function HomePage() {
       </section>
 
       {/* ── FOOTER ── */}
-      <footer style={{ background: THEME.dark, color: '#fff', padding: '2.5rem 0' }}>
+      <footer style={{ background: 'linear-gradient(to bottom, #0D2030, #050D18)', color: '#fff', padding: '2.5rem 0' }}>
         <div className="section-inner" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 20, textAlign: 'center' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
             <Image src="/logo-white.png" alt="Impact Makers Utrecht" width={48} height={48} style={{ objectFit: 'contain', opacity: 0.9 }} />

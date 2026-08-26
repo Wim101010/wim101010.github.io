@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { Menu, X, ArrowRight, Users, Target, Zap, Heart } from "lucide-react";
 
-const SIGNUP_URL = "https://forms.gle/cHvxNimUb4H7zkov6";
+const SIGNUP_URL = "https://d5a0gq2daer.typeform.com/to/IO2UUuCT";
 const WHATSAPP_URL = "https://chat.whatsapp.com/HtnrgFwcNvxEBk4bbJy4vq";
 
 const THEME = {
@@ -133,7 +133,7 @@ export default function HomePage() {
       }}>
         <div className="section-inner" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0.7rem 1.5rem' }}>
           <Link href="#" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none' }}>
-            <Image src="/logo.png" alt="Impact Makers Utrecht" width={44} height={44} style={{ objectFit: 'contain' }} />
+            <Image src="/zoomed_trans_bg.png" alt="Impact Makers Utrecht" width={44} height={44} style={{ objectFit: 'contain' }} />
             <span style={{ fontWeight: 800, color: THEME.navy, fontSize: '0.95rem', lineHeight: 1.2 }}>Impact Makers<br />Utrecht</span>
           </Link>
 
@@ -248,8 +248,8 @@ export default function HomePage() {
             </div>
             <div style={{ background: 'linear-gradient(135deg, #B8DCF5 0%, #9ACEED 100%)', borderRadius: 20, padding: '2.5rem', position: 'relative', overflow: 'hidden' }}>
               {/* Faint logo watermark */}
-              <div style={{ position: 'absolute', bottom: -20, right: -20, width: 140, height: 140, opacity: 0.07 }}>
-                <Image src="/logo.png" alt="" fill style={{ objectFit: 'contain' }} />
+              <div style={{ position: 'absolute', bottom: -20, right: -20, width: 140, height: 140, opacity: 0.12 }}>
+                <Image src="/zoomed_trans_bg.png" alt="" fill style={{ objectFit: 'contain' }} />
               </div>
               <h3 style={{ fontWeight: 800, fontSize: '1.2rem', color: THEME.navy, marginBottom: 20 }}>Our approach in one sentence:</h3>
               <p style={{ fontSize: 'clamp(1.1rem, 2.5vw, 1.4rem)', fontWeight: 700, lineHeight: 1.5, color: THEME.dark }}>

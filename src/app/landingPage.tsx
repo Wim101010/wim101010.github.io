@@ -300,7 +300,34 @@ export default function HomePage() {
             })}
           </div>
 
-          <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+          {/* Syllabus callout */}
+          <div style={{
+            margin: '3rem auto 0', maxWidth: 680,
+            background: 'rgba(255,255,255,0.7)', backdropFilter: 'blur(6px)',
+            borderRadius: 16, padding: '1.5rem 2rem',
+            border: `1.5px solid ${THEME.accentLight}`,
+            display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+            gap: '1.5rem', flexWrap: 'wrap',
+            boxShadow: '0 2px 16px rgba(20,60,90,.08)',
+          }}>
+            <div>
+              <div style={{ fontWeight: 800, fontSize: '1rem', color: THEME.navy, marginBottom: 4 }}>
+                📄 Full syllabus
+              </div>
+              <div style={{ fontSize: '0.9rem', color: THEME.gray, lineHeight: 1.5 }}>
+                Curious about every topic we cover across the four sessions? Read the complete syllabus.
+              </div>
+            </div>
+            <a
+              href="https://docs.google.com/document/d/e/2PACX-1vSmyDLhElRh2edxmzdHPDWDvc4DuhpA_rn9-QPoJ4rq_utCaBMhSVkFaKmnmBXW23GLmIIbvvfqYKW0/pub"
+              target="_blank" rel="noopener noreferrer"
+              className="btn btn-outline"
+              style={{ borderColor: THEME.navy, color: THEME.navy, whiteSpace: 'nowrap', flexShrink: 0 }}>
+              Read the syllabus <ArrowRight size={14} />
+            </a>
+          </div>
+
+          <div style={{ textAlign: 'center', marginTop: '2rem' }}>
             <a href={SIGNUP_URL} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-lg">
               Join the next round <ArrowRight size={18} />
             </a>

@@ -62,7 +62,8 @@ const STEPS = [
   {
     number: "04",
     title: "Action",
-    desc: "You leave with a concrete, immediately executable action plan. Not someday — now.",
+    desc: "We make a concrete and executable action plan — and then execute it!",
+    descBold: true,
     icon: Heart,
     color: "#56B0E0",
   },
@@ -107,7 +108,7 @@ const TEAM = [
   {
     name: "Tuana",
     photo: "/Tuana.png",
-    bio: "Utrecht University student",
+    bio: "Hey there, this is Tuana. I am an international student living in Utrecht, and I do my masters in Regenerative Medicine and Technology. I volunteer with Health Progress Hub part-time, doing research on bottlenecks that prevent people from accessing the medicines they need. I do love a cozy book & coffee combo, and you can always count on me for photography walks.",
     cardBg: "linear-gradient(160deg, #C8E6F7 0%, #A8D4EE 100%)",
     borderColor: "#328CBE",
   },
@@ -194,10 +195,10 @@ export default function HomePage() {
             </span>
           </div>
           <h1 className="fade-up fade-up-1" style={{ fontSize: 'clamp(2.4rem, 7vw, 5rem)', fontWeight: 900, lineHeight: 1.05, letterSpacing: '-0.02em', marginTop: 12 }}>
-            Your ambition.<br />Real impact.
+            Doing things that actually matter
           </h1>
           <p className="fade-up fade-up-2" style={{ fontSize: 'clamp(1rem, 2.5vw, 1.25rem)', opacity: 0.92, maxWidth: 660, margin: '24px auto 0' }}>
-            You want to change the world — but where do you start? Impact Makers Utrecht guides students through a proven 4-step fellowship to turn big ideas into concrete action.
+            You feel like the world is going to shits but doing something feels to complex? we got you. At Impact Makers Utrecht we help you set the first steps towards positive change.
           </p>
           <div className="fade-up fade-up-3" style={{ marginTop: 36, display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
             <a href={SIGNUP_URL} target="_blank" rel="noopener noreferrer" className="btn btn-white btn-lg">
@@ -234,16 +235,19 @@ export default function HomePage() {
             <div>
               <span className="tag" style={{ background: THEME.beigeDeep, color: THEME.navy, marginBottom: 16, display: 'inline-block' }}>Who we are</span>
               <h2 className="section-title" style={{ color: THEME.dark }}>
-                A student movement<br />that gets things done.
+                By students,<br />for students.
               </h2>
               <p style={{ marginTop: 20, color: THEME.gray, fontSize: '1.05rem', lineHeight: 1.7 }}>
-                Impact Makers Utrecht is a youth-led student movement with a clear mission: to activate and guide socially engaged students. For three years we&apos;ve been running fellowship cycles with over 50 participants in total, led by a core team of dedicated volunteers from Utrecht University.
+                3 years ago we were sitting at the same place you are sitting now. Things around us are not going great and someone needs to do something about it.
               </p>
               <p style={{ marginTop: 16, color: THEME.gray, fontSize: '1.05rem', lineHeight: 1.7 }}>
-                We see it everywhere: students genuinely want to make a difference, but feel overwhelmed by the size and complexity of today&apos;s problems — climate change, social inequality, global health. That feeling can lead to paralysis.
+                The great news is, we are those someone&apos;s! Students in the Netherlands are some of the most talented and educated people in the world and we have some time to spare.
+              </p>
+              <p style={{ marginTop: 16, color: THEME.gray, fontSize: '1.05rem', lineHeight: 1.7 }}>
+                However, actually making change can feel complex and scary.
               </p>
               <p style={{ marginTop: 16, color: THEME.navy, fontSize: '1.05rem', fontWeight: 700, lineHeight: 1.7 }}>
-                We break through that barrier.
+                That is why we help you break that barrier.
               </p>
             </div>
             <div style={{ background: 'linear-gradient(135deg, #B8DCF5 0%, #9ACEED 100%)', borderRadius: 20, padding: '2.5rem', position: 'relative', overflow: 'hidden' }}>
@@ -272,7 +276,7 @@ export default function HomePage() {
             <span className="tag" style={{ background: THEME.navy, color: '#fff', marginBottom: 16, display: 'inline-block' }}>The Fellowship Programme</span>
             <h2 className="section-title" style={{ color: THEME.dark }}>Four sessions. Eight weeks. One action plan.</h2>
             <p style={{ marginTop: 16, color: THEME.gray, fontSize: '1.05rem', lineHeight: 1.7 }}>
-              In small groups of 4–8 students, guided by two trained facilitators, you work through a funnel that takes you from &ldquo;I want to do something good&rdquo; to a concrete, real-world action plan.
+              In small groups of 4–8 students, guided by us, you work through a funnel that takes you from &ldquo;I want to do something good&rdquo; to a concrete, real-world action plan.
             </p>
             <p style={{ marginTop: 8, color: THEME.gray, fontSize: '0.95rem' }}>Each session: 1.5 hrs prep reading + 1.5 hrs on location · Fully free · In Utrecht</p>
           </div>
@@ -294,7 +298,11 @@ export default function HomePage() {
                     </div>
                   </div>
                   <h3 style={{ fontWeight: 800, fontSize: '1.15rem', color: THEME.dark, marginBottom: 10 }}>{step.title}</h3>
-                  <p style={{ color: THEME.gray, fontSize: '0.92rem', lineHeight: 1.65 }}>{step.desc}</p>
+                  <p style={{ color: THEME.gray, fontSize: '0.92rem', lineHeight: 1.65 }}>
+                    {step.descBold
+                      ? <>We make a concrete and executable action plan — <strong>and then execute it!</strong></>
+                      : step.desc}
+                  </p>
                 </div>
               );
             })}

@@ -29,7 +29,7 @@ const THEME = {
 
 const NAV = [
   { label: "About", href: "#about" },
-  { label: "25 Sept", href: "#event", highlight: true },
+  { label: "25 Sept", href: "#event" },
   { label: "The Programme", href: "#programme" },
   { label: "Get Involved", href: "#join" },
 ];
@@ -152,14 +152,9 @@ export default function HomePage() {
           <nav style={{ display: 'flex', gap: 28, alignItems: 'center' }} className="desktop-nav">
             {NAV.map(n => (
               <Link key={n.label} href={n.href}
-                style={{
-                  color: n.highlight ? THEME.accent : THEME.gray,
-                  fontWeight: n.highlight ? 700 : 500,
-                  fontSize: '0.9rem', textDecoration: 'none',
-                  ...(n.highlight ? { background: `${THEME.accent}18`, padding: '0.25rem 0.65rem', borderRadius: 20, border: `1px solid ${THEME.accent}44` } : {}),
-                }}
+                style={{ color: THEME.gray, fontWeight: 500, fontSize: '0.9rem', textDecoration: 'none' }}
                 onMouseEnter={e => (e.currentTarget.style.color = THEME.navy)}
-                onMouseLeave={e => (e.currentTarget.style.color = n.highlight ? THEME.accent : THEME.gray)}>
+                onMouseLeave={e => (e.currentTarget.style.color = THEME.gray)}>
                 {n.label}
               </Link>
             ))}
@@ -180,7 +175,7 @@ export default function HomePage() {
           <div style={{ background: '#fff', borderTop: `1px solid ${THEME.beigeDeep}`, padding: '1rem 1.5rem', display: 'flex', flexDirection: 'column', gap: 12 }}>
             {NAV.map(n => (
               <Link key={n.label} href={n.href} onClick={() => setOpen(false)}
-                style={{ color: n.highlight ? THEME.accent : THEME.dark, fontWeight: 600, textDecoration: 'none', fontSize: '1rem', padding: '0.4rem 0' }}>
+                style={{ color: THEME.dark, fontWeight: 600, textDecoration: 'none', fontSize: '1rem', padding: '0.4rem 0' }}>
                 {n.label}
               </Link>
             ))}
@@ -394,7 +389,10 @@ export default function HomePage() {
       <section id="programme" style={{ padding: '5rem 0', background: 'linear-gradient(135deg, #C8E6F7 0%, #B0D8F2 100%)' }}>
         <div className="section-inner">
           <div style={{ textAlign: 'center', maxWidth: 700, margin: '0 auto 3.5rem' }}>
-            <span className="tag" style={{ background: THEME.navy, color: '#fff', marginBottom: 16, display: 'inline-block' }}>The Fellowship Programme</span>
+            <div style={{ display: 'flex', gap: 8, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 16 }}>
+              <span className="tag" style={{ background: THEME.navy, color: '#fff', display: 'inline-block' }}>The Fellowship Programme</span>
+              <span className="tag" style={{ background: '#22a057', color: '#fff', display: 'inline-block' }}>✓ Free</span>
+            </div>
             <h2 className="section-title" style={{ color: THEME.dark }}>Four sessions. Eight weeks. One action plan.</h2>
             <p style={{ marginTop: 16, color: THEME.gray, fontSize: '1.05rem', lineHeight: 1.7 }}>
               In small groups of 4–8 students, guided by us, you work through a funnel that takes you from &ldquo;I want to do something good&rdquo; to a concrete, real-world action plan.
@@ -533,6 +531,22 @@ export default function HomePage() {
           <p style={{ marginTop: 20, fontSize: 'clamp(1rem, 2vw, 1.2rem)', opacity: 0.88, maxWidth: 580, margin: '20px auto 0' }}>
             Apply for the next fellowship round. Four sessions. Small group. Big shift. Completely free.
           </p>
+          {/* Key dates box */}
+          <div style={{
+            display: 'inline-block', margin: '2rem auto 0', textAlign: 'left',
+            background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)',
+            borderRadius: 14, padding: '1.25rem 1.75rem', backdropFilter: 'blur(6px)',
+          }}>
+            <div style={{ fontSize: '0.7rem', fontWeight: 800, letterSpacing: '0.12em', textTransform: 'uppercase', opacity: 0.6, marginBottom: 10 }}>Key dates</div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '4px 16px', fontSize: '0.9rem', lineHeight: 1.7 }}>
+              <span style={{ fontWeight: 800 }}>Apply by</span><span style={{ fontWeight: 800, color: THEME.accentLight }}>October 31</span>
+              <span style={{ opacity: 0.7 }}>Session 1</span><span style={{ opacity: 0.85 }}>Nov 9–15</span>
+              <span style={{ opacity: 0.7 }}>Session 2</span><span style={{ opacity: 0.85 }}>Nov 23–29</span>
+              <span style={{ opacity: 0.7 }}>Session 3</span><span style={{ opacity: 0.85 }}>Dec 7–13</span>
+              <span style={{ opacity: 0.7 }}>Session 4</span><span style={{ opacity: 0.85 }}>Dec 14–20</span>
+            </div>
+          </div>
+
           <div style={{ marginTop: 40, display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
             <a href={SIGNUP_URL} target="_blank" rel="noopener noreferrer" className="btn btn-white btn-lg">
               Apply for the fellowship <ArrowRight size={18} />

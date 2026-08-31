@@ -29,7 +29,7 @@ const THEME = {
 
 const NAV = [
   { label: "About", href: "#about" },
-  { label: "25 Sept →", href: "#event", highlight: true },
+  { label: "25 Sept", href: "#event", highlight: true },
   { label: "The Programme", href: "#programme" },
   { label: "Get Involved", href: "#join" },
 ];
@@ -54,7 +54,7 @@ const STEPS = [
   {
     number: "02",
     title: "Form",
-    desc: "We explore together how you want to create impact — volunteering, research, activism, or career choices.",
+    desc: "We explore together how you want to create impact: volunteering, research, activism, or career choices.",
     icon: Zap,
     color: "#1A5F8A",
   },
@@ -119,7 +119,7 @@ export default function HomePage() {
       "DTSTART;TZID=Europe/Amsterdam:20250925T190000",
       "DTEND;TZID=Europe/Amsterdam:20250925T200000",
       "SUMMARY:Learn More Evening – Impact Makers Utrecht",
-      "DESCRIPTION:Come meet the team and likeminded students at the Huis van Actief Burgerschap. No commitment needed — just show up!",
+      "DESCRIPTION:Come meet the team and likeminded students at the Huis van Actief Burgerschap to learn more.",
       "LOCATION:Bibliotheek Neude\\, Huis van Actief Burgerschap\\, Neude 11\\, 3512 AD Utrecht",
       "URL:https://wim101010.github.io",
       "END:VEVENT",
@@ -218,8 +218,8 @@ export default function HomePage() {
             <a href={SIGNUP_URL} target="_blank" rel="noopener noreferrer" className="btn btn-white btn-lg">
               Apply for the fellowship <ArrowRight size={18} />
             </a>
-            <a href="#event" className="btn btn-lg" style={{ background: 'rgba(255,255,255,.15)', color: '#fff', border: '2px solid rgba(255,255,255,.5)', backdropFilter: 'blur(4px)' }}>
-              📅 Join our 25 Sept event
+            <a href="#about" className="btn btn-lg" style={{ background: 'rgba(255,255,255,.15)', color: '#fff', border: '2px solid rgba(255,255,255,.5)', backdropFilter: 'blur(4px)' }}>
+              Learn more
             </a>
           </div>
           <p style={{ marginTop: 20, fontSize: '0.85rem', opacity: 0.7 }}>Free · 4 sessions · Applications open now</p>
@@ -289,7 +289,7 @@ export default function HomePage() {
             <span className="tag" style={{ background: THEME.navy, color: '#fff', marginBottom: 16, display: 'inline-block' }}>The people behind it</span>
             <h2 className="section-title" style={{ color: THEME.dark }}>Meet the organisers</h2>
             <p style={{ marginTop: 16, color: THEME.gray, fontSize: '1.05rem', lineHeight: 1.7 }}>
-              We&apos;re four students at Utrecht University who believe that every student has the potential to create real-world impact — and decided to build something to prove it.
+              We&apos;re four students at Utrecht University who believe that every student has the potential to create real-world impact. So we built something to prove it.
             </p>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 28 }}>
@@ -326,7 +326,7 @@ export default function HomePage() {
             <span className="tag" style={{ background: THEME.accent, color: '#fff', marginBottom: 16, display: 'inline-block' }}>📅 Next event · Free</span>
             <h2 className="section-title" style={{ color: THEME.dark }}>Want to meet us first?<br />Come say hi.</h2>
             <p style={{ marginTop: 16, color: THEME.gray, fontSize: '1.05rem', lineHeight: 1.7 }}>
-              Not sure if Impact Makers is for you? Don&apos;t commit to anything — just show up for an evening of good conversations with likeminded students. Zero pressure.
+              Not sure if Impact Makers is for you? Don&apos;t commit to anything. Just show up for an evening of good conversations with likeminded students. Zero pressure.
             </p>
           </div>
 
@@ -346,7 +346,7 @@ export default function HomePage() {
                 </div>
               </div>
               <div style={{ padding: '0.85rem 1.1rem', background: 'rgba(255,255,255,0.12)', borderRadius: 12, fontSize: '0.9rem', lineHeight: 1.6 }}>
-                🎓 For everyone curious about making impact — no experience needed, no commitment required.
+                🎓 For everyone curious about making impact. No experience needed, no commitment required.
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                 <a
@@ -364,7 +364,7 @@ export default function HomePage() {
                   📥 Add to Apple / Outlook Calendar
                 </button>
                 <a
-                  href="https://www.google.com/maps/dir//Neude+11,+3512+AD+Utrecht"
+                  href="https://www.google.com/maps/place/Neude+11,+3512+AD+Utrecht/@52.0913,5.1206,17z"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn"
@@ -377,7 +377,7 @@ export default function HomePage() {
             {/* OpenStreetMap embed — no API key needed */}
             <div style={{ borderRadius: 20, overflow: 'hidden', boxShadow: '0 8px 32px rgba(20,60,90,.15)', minHeight: 380, position: 'relative' }}>
               <iframe
-                src="https://www.openstreetmap.org/export/embed.html?bbox=5.1169%2C52.0893%2C5.1269%2C52.0933&layer=mapnik&marker=52.0913%2C5.1219"
+                src="https://www.openstreetmap.org/export/embed.html?bbox=5.1156%2C52.0893%2C5.1256%2C52.0933&layer=mapnik&marker=52.0913%2C5.1206"
                 width="100%"
                 height="100%"
                 style={{ border: 0, display: 'block', position: 'absolute', inset: 0, width: '100%', height: '100%' }}
@@ -421,7 +421,7 @@ export default function HomePage() {
                   <h3 style={{ fontWeight: 800, fontSize: '1.15rem', color: THEME.dark, marginBottom: 10 }}>{step.title}</h3>
                   <p style={{ color: THEME.gray, fontSize: '0.92rem', lineHeight: 1.65 }}>
                     {step.descBold
-                      ? <>We make a concrete and executable action plan — <strong>and then execute it!</strong></>
+                      ? <>We make a concrete and executable action plan. <strong>Then we execute it!</strong></>
                       : step.desc}
                   </p>
                 </div>
@@ -473,7 +473,7 @@ export default function HomePage() {
             <span className="tag" style={{ background: THEME.beigeDeep, color: THEME.navy, marginBottom: 16, display: 'inline-block' }}>See it in action</span>
             <h2 className="section-title" style={{ color: THEME.dark }}>What does making impact actually look like?</h2>
             <p style={{ marginTop: 16, color: THEME.gray, fontSize: '1.05rem', lineHeight: 1.7 }}>
-              Watch this short video to understand what drives us — and why this moment matters for students who want to do more than just talk about change.
+              Watch this short video to understand what drives us, and why this moment matters for students who want to do more than just talk about change.
             </p>
           </div>
           <div style={{ borderRadius: 16, overflow: 'hidden', boxShadow: '0 8px 32px rgba(20,60,90,.15)', aspectRatio: '16/9', position: 'relative' }}>
@@ -541,10 +541,11 @@ export default function HomePage() {
               style={{ background: 'rgba(255,255,255,.15)', color: '#fff', border: '2px solid rgba(255,255,255,.4)', backdropFilter: 'blur(4px)' }}>
               Join our WhatsApp
             </a>
+            <a href="mailto:wimtenberge1@gmail.com" className="btn btn-lg"
+              style={{ background: 'rgba(255,255,255,.15)', color: '#fff', border: '2px solid rgba(255,255,255,.4)', backdropFilter: 'blur(4px)' }}>
+              ✉️ Send us an email
+            </a>
           </div>
-          <p style={{ marginTop: 24, opacity: 0.6, fontSize: '0.85rem' }}>
-            Questions? Reach out at <a href="mailto:wimtenberge1@gmail.com" style={{ color: '#fff', textDecoration: 'underline' }}>wimtenberge1@gmail.com</a>
-          </p>
         </div>
       </section>
 
@@ -572,7 +573,7 @@ export default function HomePage() {
               className="btn btn-outline" style={{ color: '#fff', borderColor: 'rgba(255,255,255,.3)', fontSize: '0.85rem', padding: '0.5rem 1rem' }}
               onMouseEnter={e => { e.currentTarget.style.background = '#fff'; e.currentTarget.style.color = THEME.dark; }}
               onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#fff'; }}>
-              Email
+              ✉️ wimtenberge1@gmail.com
             </a>
           </div>
           <p style={{ color: 'rgba(255,255,255,.4)', fontSize: '0.8rem' }}>

@@ -7,24 +7,30 @@ import { Menu, X, ArrowRight, Users, Target, Zap, Heart } from "lucide-react";
 
 const SIGNUP_URL = "https://d5a0gq2daer.typeform.com/to/IO2UUuCT";
 const WHATSAPP_URL = "https://chat.whatsapp.com/HtnrgFwcNvxEBk4bbJy4vq";
+const GOOGLE_CALENDAR_URL =
+  "https://calendar.google.com/calendar/render?action=TEMPLATE" +
+  "&text=Learn+More+Evening+%E2%80%93+Impact+Makers+Utrecht" +
+  "&dates=20250925T170000Z%2F20250925T180000Z" +
+  "&details=Come+meet+the+team+and+likeminded+students.+No+commitment+needed+%E2%80%94+just+show+up%21" +
+  "&location=Bibliotheek+Neude%2C+Huis+van+Actief+Burgerschap%2C+Neude+11%2C+3512+AD+Utrecht";
 
 const THEME = {
   white: "#ffffff",
-  pageLight: "#EFF8FF",   // off-white tint — replaces pure white sections
+  pageLight: "#EFF8FF",
   navy: "#143C5A",
   navyLight: "#1E4E72",
   accent: "#328CBE",
   accentLight: "#56B0E0",
   gray: "#4b5563",
-  beige: "#C8E6F7",       // more saturated
-  beigeDeep: "#9ACEED",   // more saturated
+  beige: "#C8E6F7",
+  beigeDeep: "#9ACEED",
   dark: "#0D2030",
 };
 
 const NAV = [
   { label: "About", href: "#about" },
+  { label: "25 Sept →", href: "#event", highlight: true },
   { label: "The Programme", href: "#programme" },
-  { label: "Stories", href: "#stories" },
   { label: "Get Involved", href: "#join" },
 ];
 
@@ -69,26 +75,6 @@ const STEPS = [
   },
 ];
 
-const STORIES = [
-  {
-    quote: "I launched an endometriosis awareness campaign that reached thousands of people.",
-    tag: "Round 1",
-    color: "#143C5A",
-    bg: "#D6EEFA",
-  },
-  {
-    quote: "I found my place at Buddy-to-Buddy and now volunteer every week. Impact Makers gave me the push I needed.",
-    tag: "Round 2",
-    color: "#328CBE",
-    bg: "#C2E4F5",
-  },
-  {
-    quote: "Through the fellowship I figured out exactly where I wanted to go — I ended up doing international volunteer work.",
-    tag: "Round 3",
-    color: "#1A5F8A",
-    bg: "#CBE8F6",
-  },
-];
 
 const TEAM = [
   {
@@ -124,6 +110,31 @@ const TEAM = [
 export default function HomePage() {
   const [open, setOpen] = useState(false);
 
+  const handleICSDownload = () => {
+    const ics = [
+      "BEGIN:VCALENDAR",
+      "VERSION:2.0",
+      "PRODID:-//Impact Makers Utrecht//Learn More Evening//EN",
+      "BEGIN:VEVENT",
+      "DTSTART;TZID=Europe/Amsterdam:20250925T190000",
+      "DTEND;TZID=Europe/Amsterdam:20250925T200000",
+      "SUMMARY:Learn More Evening – Impact Makers Utrecht",
+      "DESCRIPTION:Come meet the team and likeminded students at the Huis van Actief Burgerschap. No commitment needed — just show up!",
+      "LOCATION:Bibliotheek Neude\\, Huis van Actief Burgerschap\\, Neude 11\\, 3512 AD Utrecht",
+      "URL:https://wim101010.github.io",
+      "END:VEVENT",
+      "END:VCALENDAR",
+    ].join("\r\n");
+
+    const blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "learn-more-evening-impact-makers.ics";
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
   return (
     <>
       {/* ── NAVBAR ── */}
@@ -141,9 +152,14 @@ export default function HomePage() {
           <nav style={{ display: 'flex', gap: 28, alignItems: 'center' }} className="desktop-nav">
             {NAV.map(n => (
               <Link key={n.label} href={n.href}
-                style={{ color: THEME.gray, fontWeight: 500, fontSize: '0.9rem', textDecoration: 'none' }}
+                style={{
+                  color: n.highlight ? THEME.accent : THEME.gray,
+                  fontWeight: n.highlight ? 700 : 500,
+                  fontSize: '0.9rem', textDecoration: 'none',
+                  ...(n.highlight ? { background: `${THEME.accent}18`, padding: '0.25rem 0.65rem', borderRadius: 20, border: `1px solid ${THEME.accent}44` } : {}),
+                }}
                 onMouseEnter={e => (e.currentTarget.style.color = THEME.navy)}
-                onMouseLeave={e => (e.currentTarget.style.color = THEME.gray)}>
+                onMouseLeave={e => (e.currentTarget.style.color = n.highlight ? THEME.accent : THEME.gray)}>
                 {n.label}
               </Link>
             ))}
@@ -164,7 +180,7 @@ export default function HomePage() {
           <div style={{ background: '#fff', borderTop: `1px solid ${THEME.beigeDeep}`, padding: '1rem 1.5rem', display: 'flex', flexDirection: 'column', gap: 12 }}>
             {NAV.map(n => (
               <Link key={n.label} href={n.href} onClick={() => setOpen(false)}
-                style={{ color: THEME.dark, fontWeight: 600, textDecoration: 'none', fontSize: '1rem', padding: '0.4rem 0' }}>
+                style={{ color: n.highlight ? THEME.accent : THEME.dark, fontWeight: 600, textDecoration: 'none', fontSize: '1rem', padding: '0.4rem 0' }}>
                 {n.label}
               </Link>
             ))}
@@ -181,11 +197,9 @@ export default function HomePage() {
           <Image src="/droneshot.jpg" alt="Impact Makers Utrecht community" fill sizes="100vw" priority
             style={{ objectFit: 'cover', filter: 'brightness(0.38)' }} />
         </div>
-        {/* navy-tinted gradient overlay */}
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(20,60,90,0.35) 0%, rgba(0,0,0,0.05) 50%, rgba(13,32,48,0.65) 100%)' }} />
 
         <div style={{ position: 'relative', zIndex: 1, padding: '0 1.5rem', maxWidth: 860 }}>
-          {/* Logo prominent in hero */}
           <div className="fade-up" style={{ marginBottom: 24, display: 'flex', justifyContent: 'center' }}>
             <Image src="/logo-white.png" alt="Impact Makers Utrecht" width={100} height={100} style={{ objectFit: 'contain', filter: 'drop-shadow(0 4px 16px rgba(0,0,0,0.4))' }} />
           </div>
@@ -198,14 +212,14 @@ export default function HomePage() {
             Doing things that actually matter
           </h1>
           <p className="fade-up fade-up-2" style={{ fontSize: 'clamp(1rem, 2.5vw, 1.25rem)', opacity: 0.92, maxWidth: 660, margin: '24px auto 0' }}>
-            You feel like the world is going to shits but doing something feels to complex? we got you. At Impact Makers Utrecht we help you set the first steps towards positive change.
+            You feel like the world is going to shits but doing something feels too complex? We got you. At Impact Makers Utrecht we help you set the first steps towards positive change.
           </p>
           <div className="fade-up fade-up-3" style={{ marginTop: 36, display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
             <a href={SIGNUP_URL} target="_blank" rel="noopener noreferrer" className="btn btn-white btn-lg">
               Apply for the fellowship <ArrowRight size={18} />
             </a>
-            <a href="#about" className="btn btn-lg" style={{ background: 'rgba(255,255,255,.15)', color: '#fff', border: '2px solid rgba(255,255,255,.5)', backdropFilter: 'blur(4px)' }}>
-              Learn more
+            <a href="#event" className="btn btn-lg" style={{ background: 'rgba(255,255,255,.15)', color: '#fff', border: '2px solid rgba(255,255,255,.5)', backdropFilter: 'blur(4px)' }}>
+              📅 Join our 25 Sept event
             </a>
           </div>
           <p style={{ marginTop: 20, fontSize: '0.85rem', opacity: 0.7 }}>Free · 4 sessions · Applications open now</p>
@@ -251,7 +265,6 @@ export default function HomePage() {
               </p>
             </div>
             <div style={{ background: 'linear-gradient(135deg, #B8DCF5 0%, #9ACEED 100%)', borderRadius: 20, padding: '2.5rem', position: 'relative', overflow: 'hidden' }}>
-              {/* Faint logo watermark */}
               <div style={{ position: 'absolute', bottom: -20, right: -20, width: 140, height: 140, opacity: 0.12 }}>
                 <Image src="/zoomed_trans_bg.png" alt="" fill style={{ objectFit: 'contain' }} />
               </div>
@@ -262,6 +275,114 @@ export default function HomePage() {
               <p style={{ marginTop: 20, color: THEME.gray, fontSize: '0.95rem', lineHeight: 1.6 }}>
                 We help you narrow down your broad ambitions, connect you with existing initiatives, or guide you in launching your own project. Inaction becomes participation.
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="divider" />
+
+      {/* ── TEAM ── */}
+      <section id="team" style={{ padding: '5rem 0', background: 'linear-gradient(160deg, #C8E6F7 0%, #B0D8F2 100%)' }}>
+        <div className="section-inner">
+          <div style={{ textAlign: 'center', maxWidth: 640, margin: '0 auto 3.5rem' }}>
+            <span className="tag" style={{ background: THEME.navy, color: '#fff', marginBottom: 16, display: 'inline-block' }}>The people behind it</span>
+            <h2 className="section-title" style={{ color: THEME.dark }}>Meet the organisers</h2>
+            <p style={{ marginTop: 16, color: THEME.gray, fontSize: '1.05rem', lineHeight: 1.7 }}>
+              We&apos;re four students at Utrecht University who believe that every student has the potential to create real-world impact — and decided to build something to prove it.
+            </p>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 28 }}>
+            {TEAM.map((member) => (
+              <div key={member.name} style={{
+                background: member.cardBg, borderRadius: 20, padding: '2rem 1.5rem',
+                textAlign: 'center', boxShadow: '0 4px 24px rgba(20,60,90,.12)',
+                borderTop: `4px solid ${member.borderColor}`,
+              }}>
+                <div style={{
+                  width: 100, height: 100, borderRadius: '50%',
+                  overflow: 'hidden', margin: '0 auto 16px',
+                  border: `3px solid ${member.borderColor}`,
+                  boxShadow: `0 4px 20px ${member.borderColor}44`,
+                  position: 'relative',
+                }}>
+                  <Image src={member.photo} alt={member.name} fill sizes="100px" style={{ objectFit: 'cover' }} />
+                </div>
+                <div style={{ fontWeight: 800, fontSize: '1.15rem', color: THEME.dark, marginBottom: 4 }}>{member.name}</div>
+                <div style={{ fontSize: '0.85rem', color: member.borderColor, fontWeight: 600, marginBottom: 10 }}>Utrecht University</div>
+                <p style={{ fontSize: '0.875rem', color: THEME.dark, lineHeight: 1.6, opacity: 0.8 }}>{member.bio}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <div className="divider" />
+
+      {/* ── LEARN MORE EVENING ── */}
+      <section id="event" style={{ padding: '5rem 0', background: 'linear-gradient(160deg, #EFF8FF 0%, #D6EEFA 100%)' }}>
+        <div className="section-inner">
+          <div style={{ textAlign: 'center', maxWidth: 640, margin: '0 auto 3rem' }}>
+            <span className="tag" style={{ background: THEME.accent, color: '#fff', marginBottom: 16, display: 'inline-block' }}>📅 Next event · Free</span>
+            <h2 className="section-title" style={{ color: THEME.dark }}>Want to meet us first?<br />Come say hi.</h2>
+            <p style={{ marginTop: 16, color: THEME.gray, fontSize: '1.05rem', lineHeight: 1.7 }}>
+              Not sure if Impact Makers is for you? Don&apos;t commit to anything — just show up for an evening of good conversations with likeminded students. Zero pressure.
+            </p>
+          </div>
+
+          <div style={{ maxWidth: 820, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 32, alignItems: 'stretch' }}>
+            {/* Event details card */}
+            <div style={{ background: 'linear-gradient(160deg, #143C5A 0%, #1A5F8A 100%)', borderRadius: 20, padding: '2.5rem', color: '#fff', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+              <div>
+                <div style={{ fontSize: '0.75rem', opacity: 0.65, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 8, fontWeight: 600 }}>When</div>
+                <div style={{ fontSize: '1.75rem', fontWeight: 900, lineHeight: 1.1 }}>Thursday, 25 Sept</div>
+                <div style={{ fontSize: '1.15rem', opacity: 0.85, marginTop: 6 }}>19:00 – 20:00</div>
+              </div>
+              <div>
+                <div style={{ fontSize: '0.75rem', opacity: 0.65, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 8, fontWeight: 600 }}>Where</div>
+                <div style={{ fontSize: '1.1rem', fontWeight: 700, lineHeight: 1.4 }}>Huis van Actief Burgerschap</div>
+                <div style={{ fontSize: '0.95rem', opacity: 0.8, marginTop: 6, lineHeight: 1.6 }}>
+                  Bibliotheek Neude<br />Neude 11, 3512 AD Utrecht
+                </div>
+              </div>
+              <div style={{ padding: '0.85rem 1.1rem', background: 'rgba(255,255,255,0.12)', borderRadius: 12, fontSize: '0.9rem', lineHeight: 1.6 }}>
+                🎓 For everyone curious about making impact — no experience needed, no commitment required.
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                <a
+                  href={GOOGLE_CALENDAR_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-white"
+                  style={{ textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
+                  📅 Add to Google Calendar
+                </a>
+                <button
+                  onClick={handleICSDownload}
+                  className="btn"
+                  style={{ background: 'rgba(255,255,255,0.15)', color: '#fff', border: '2px solid rgba(255,255,255,0.4)', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, cursor: 'pointer', fontFamily: 'inherit', fontSize: 'inherit' }}>
+                  📥 Add to Apple / Outlook Calendar
+                </button>
+                <a
+                  href="https://www.google.com/maps/dir//Neude+11,+3512+AD+Utrecht"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn"
+                  style={{ background: 'rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.85)', border: '1.5px solid rgba(255,255,255,0.25)', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
+                  📍 Get directions
+                </a>
+              </div>
+            </div>
+
+            {/* OpenStreetMap embed — no API key needed */}
+            <div style={{ borderRadius: 20, overflow: 'hidden', boxShadow: '0 8px 32px rgba(20,60,90,.15)', minHeight: 380, position: 'relative' }}>
+              <iframe
+                src="https://www.openstreetmap.org/export/embed.html?bbox=5.1169%2C52.0893%2C5.1269%2C52.0933&layer=mapnik&marker=52.0913%2C5.1219"
+                width="100%"
+                height="100%"
+                style={{ border: 0, display: 'block', position: 'absolute', inset: 0, width: '100%', height: '100%' }}
+                title="Bibliotheek Neude, Neude 11, 3512 AD Utrecht"
+              />
             </div>
           </div>
         </div>
@@ -368,68 +489,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      <div className="divider" />
-
-      {/* ── STORIES ── */}
-      <section id="stories" style={{ padding: '5rem 0', background: 'linear-gradient(135deg, #9ACEED 0%, #B8DCF5 100%)' }}>
-        <div className="section-inner">
-          <div style={{ textAlign: 'center', maxWidth: 600, margin: '0 auto 3.5rem' }}>
-            <span className="tag" style={{ background: THEME.beigeDeep, color: THEME.navy, marginBottom: 16, display: 'inline-block' }}>It works</span>
-            <h2 className="section-title" style={{ color: THEME.dark }}>Real students. Real impact.</h2>
-            <p style={{ marginTop: 16, color: THEME.gray, fontSize: '1.05rem' }}>
-              After four successful rounds, here&apos;s what our alumni have gone on to do.
-            </p>
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 24 }}>
-            {STORIES.map((s, i) => (
-              <div key={i} style={{ background: s.bg, borderRadius: 16, padding: '2rem', boxShadow: '0 4px 20px rgba(20,60,90,.12)', borderLeft: `5px solid ${s.color}` }}>
-                <div style={{ color: s.color, fontSize: '3rem', lineHeight: 0.9, fontFamily: 'Georgia, serif', marginBottom: 16, fontWeight: 700 }}>&ldquo;</div>
-                <p style={{ color: THEME.dark, fontSize: '1rem', lineHeight: 1.75, fontStyle: 'italic', marginBottom: 20 }}>{s.quote}</p>
-                <span className="tag" style={{ background: s.color, color: '#fff', fontSize: '0.7rem' }}>{s.tag}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <div className="divider" />
-
-      {/* ── TEAM ── */}
-      <section style={{ padding: '5rem 0', background: 'linear-gradient(160deg, #EFF8FF 0%, #D6EEFA 100%)' }}>
-        <div className="section-inner">
-          <div style={{ textAlign: 'center', maxWidth: 640, margin: '0 auto 3.5rem' }}>
-            <span className="tag" style={{ background: THEME.beigeDeep, color: THEME.navy, marginBottom: 16, display: 'inline-block' }}>The people behind it</span>
-            <h2 className="section-title" style={{ color: THEME.dark }}>Meet the organisers</h2>
-            <p style={{ marginTop: 16, color: THEME.gray, fontSize: '1.05rem', lineHeight: 1.7 }}>
-              We&apos;re four students at Utrecht University who believe that every student has the potential to create real-world impact — and decided to build something to prove it.
-            </p>
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 28 }}>
-            {TEAM.map((member) => (
-              <div key={member.name} style={{
-                background: member.cardBg, borderRadius: 20, padding: '2rem 1.5rem',
-                textAlign: 'center', boxShadow: '0 4px 24px rgba(20,60,90,.12)',
-                borderTop: `4px solid ${member.borderColor}`,
-              }}>
-                <div style={{
-                  width: 100, height: 100, borderRadius: '50%',
-                  overflow: 'hidden', margin: '0 auto 16px',
-                  border: `3px solid ${member.borderColor}`,
-                  boxShadow: `0 4px 20px ${member.borderColor}44`,
-                  position: 'relative',
-                }}>
-                  <Image src={member.photo} alt={member.name} fill sizes="100px" style={{ objectFit: 'cover' }} />
-                </div>
-                <div style={{ fontWeight: 800, fontSize: '1.15rem', color: THEME.dark, marginBottom: 4 }}>{member.name}</div>
-                <div style={{ fontSize: '0.85rem', color: member.borderColor, fontWeight: 600, marginBottom: 10 }}>Utrecht University</div>
-                <p style={{ fontSize: '0.875rem', color: THEME.dark, lineHeight: 1.6, opacity: 0.8 }}>{member.bio}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <div className="divider" />
 
       {/* ── NGOs ── */}
       <section style={{ padding: '5rem 0', background: 'linear-gradient(135deg, #B0D8F2 0%, #9ACEED 100%)' }}>
@@ -459,7 +518,6 @@ export default function HomePage() {
 
       {/* ── JOIN CTA ── */}
       <section id="join" style={{ padding: '6rem 0', background: 'linear-gradient(135deg, #0A1E2E 0%, #143C5A 45%, #1A5F8A 100%)', color: '#fff', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
-        {/* Faint logo watermark in CTA */}
         <div style={{ position: 'absolute', right: -60, bottom: -60, width: 360, height: 360, opacity: 0.06, pointerEvents: 'none' }}>
           <Image src="/logo-white.png" alt="" fill style={{ objectFit: 'contain' }} />
         </div>

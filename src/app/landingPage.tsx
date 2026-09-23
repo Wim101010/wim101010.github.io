@@ -34,6 +34,23 @@ const NAV = [
   { label: "Get Involved", href: "#join" },
 ];
 
+const ALUMNI = [
+  {
+    name: "Rosalie",
+    photo: "/Rosalie.webp",
+    quote: "It was really interesting to talk with others at Impact Makers about what 'doing good' actually means! It inspires you when making choices!",
+    color: "#143C5A",
+    bg: "#D6EEFA",
+  },
+  {
+    name: "Welmoed",
+    photo: "/Welmoed.jpeg",
+    quote: "Through Impact Makers I started volunteering with Sociale Gasten Amersfoort. Because of it I've met so many people and done some really meaningful work!",
+    color: "#328CBE",
+    bg: "#C2E4F5",
+  },
+];
+
 const NGOS = [
   { src: "/AIM Charity Entrepreneurship.jpg", href: "https://www.charityentrepreneurship.com/", name: "AIM Charity Entrepreneurship" },
   { src: "/Endiomitrose Stichting.jpg", href: "https://www.endometriose.nl/", name: "Endiomitrose Stichting" },
@@ -487,6 +504,33 @@ export default function HomePage() {
         </div>
       </section>
 
+
+      {/* ── ALUMNI ── */}
+      <section id="alumni" style={{ padding: '5rem 0', background: 'linear-gradient(160deg, #EFF8FF 0%, #D6EEFA 100%)' }}>
+        <div className="section-inner">
+          <div style={{ textAlign: 'center', maxWidth: 600, margin: '0 auto 3.5rem' }}>
+            <span className="tag" style={{ background: THEME.beigeDeep, color: THEME.navy, marginBottom: 16, display: 'inline-block' }}>From our alumni</span>
+            <h2 className="section-title" style={{ color: THEME.dark }}>In their own words</h2>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 24, maxWidth: 900, margin: '0 auto' }}>
+            {ALUMNI.map((a) => (
+              <div key={a.name} style={{ background: a.bg, borderRadius: 16, padding: '2rem', boxShadow: '0 4px 20px rgba(20,60,90,.12)', borderLeft: `5px solid ${a.color}`, display: 'flex', flexDirection: 'column' }}>
+                <div style={{ color: a.color, fontSize: '3rem', lineHeight: 0.9, fontFamily: 'Georgia, serif', marginBottom: 16, fontWeight: 700 }}>&ldquo;</div>
+                <p style={{ color: THEME.dark, fontSize: '1rem', lineHeight: 1.75, fontStyle: 'italic', marginBottom: 24, flex: 1 }}>{a.quote}</p>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+                  <div style={{ width: 56, height: 56, borderRadius: '50%', overflow: 'hidden', position: 'relative', border: `3px solid ${a.color}`, flexShrink: 0 }}>
+                    <Image src={a.photo} alt={a.name} fill sizes="56px" style={{ objectFit: 'cover' }} />
+                  </div>
+                  <div>
+                    <div style={{ fontWeight: 800, color: THEME.dark }}>{a.name}</div>
+                    <div style={{ fontSize: '0.8rem', color: a.color, fontWeight: 600 }}>Impact Makers alumna</div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ── NGOs ── */}
       <section style={{ padding: '5rem 0', background: 'linear-gradient(135deg, #B0D8F2 0%, #9ACEED 100%)' }}>

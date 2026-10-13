@@ -118,10 +118,11 @@ const TEAM = [
   {
     name: "Hugo",
     photo: "/Hugo.png",
-    bio: "Utrecht University student",
-    cardBg: "linear-gradient(160deg, #B8DCF5 0%, #9ACEED 100%)",
-    borderColor: "#56B0E0",
-  },
+    bio: `Hi, I am Hugo. I just graduated with bachelor’s degrees in Psychology and Biology at Utrecht University. During my studies, I learned a lot about social, societal, and environmental challenges, but I missed the practical part: “What can I do? Where can I contribute?” That’s where Impact Makers University came in!
+I am interested in small individual actions, like switching to a sustainable bank, that can trigger significant change. Besides, I am also active in Plant Based Universities, a student movement across Europe where we try to make university catering and canteens more sustainable.`,
+cardBg: "linear-gradient(160deg, #B8DCF5 0%, #9ACEED 100%)",
+    borderColor: "#56B0E0",  
+},
 ];
 
 export default function HomePage() {

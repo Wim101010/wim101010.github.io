@@ -32,6 +32,7 @@ const NAV = [
   { label: "25 Sept", href: "#event" },
   { label: "The Programme", href: "#programme" },
   { label: "Get Involved", href: "#join" },
+  { label: "Inspiration", href: "/inspiration" },
 ];
 
 const ALUMNI = [

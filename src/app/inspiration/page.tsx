@@ -71,7 +71,7 @@ export default function InspirationPage() {
             <ArrowLeft size={16} /> Terug naar overzicht
           </Link>
         </div>
-        
+
         <div style={{ position: 'absolute', inset: 0 }}>
           <Image src="/droneshot.jpg" alt="Impact Makers Utrecht community" fill sizes="100vw" priority
             style={{ objectFit: 'cover', filter: 'brightness(0.38)' }} />
@@ -145,10 +145,9 @@ export default function InspirationPage() {
                 {item.type === "article" && (
                   <div style={{ background: THEME.pageLight, padding: "1.25rem", borderRadius: "12px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "1rem" }}>
                     <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-                      {/* Als er een imageUrl is, toon dat plaatje, anders de kranten-emoji */}
                       {item.imageUrl ? (
                         <div style={{ position: "relative", width: "36px", height: "36px", borderRadius: "6px", overflow: "hidden", flexShrink: 0 }}>
-                          <Image src={`/${item.imageUrl}`} alt={item.source} fill style={{ objectFit: "cover" }} />
+                          <Image src={`/${item.imageUrl}`} alt={item.source || "Artikel"} fill style={{ objectFit: "cover" }} />
                         </div>
                       ) : (
                         <span style={{ fontSize: "1.4rem" }}>📰</span>
@@ -169,10 +168,9 @@ export default function InspirationPage() {
                 {item.type === "external_movie" && (
                   <div style={{ background: THEME.dark, color: "#fff", borderRadius: "12px", padding: "1.5rem", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "1rem" }}>
                     <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
-                      {/* Als er een imageUrl is, toon dat plaatje als logo, anders de emoji */}
                       {item.imageUrl ? (
                         <div style={{ position: "relative", width: "36px", height: "36px", borderRadius: "6px", overflow: "hidden", flexShrink: 0 }}>
-                          <Image src={`/${item.imageUrl}`} alt={item.platform} fill style={{ objectFit: "cover" }} />
+                          <Image src={`/${item.imageUrl}`} alt={item.platform || "Film"} fill style={{ objectFit: "cover" }} />
                         </div>
                       ) : (
                         <span style={{ fontSize: "1.4rem" }}>🎬</span>
